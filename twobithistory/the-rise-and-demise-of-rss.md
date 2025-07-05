@@ -1,158 +1,175 @@
 # 翻译 | RSS 的兴起与衰落
-原文：[The Rise and Demise of RSS](https://twobithistory.org/2018/09/16/the-rise-and-demise-of-rss.html)
+原文：[The Rise and Demise of RSS](https://twobithistory.org/2018/12/18/rss.html)
 
-这有两个故事。第一个故事是关于一个从未完全实现的对互联网未来的愿景。第二个故事，则讲述了改善一个流行标准的合作是如何演变为开源软件发展史上最富争议的问题之一。
+_本文初版发布于 [2018年9月16日](https://twobithistory.org/2018/09/16/the-rise-and-demise-of-rss.html)。此为修订版，增补了对 Ramanathan Guha、Ian Davis、Dan Libby 和 Kevin Werbach 的访谈内容。_
 
-90 年代末，在那个网景公司 IPO 与互联网泡沫崩溃间的狂热年代，每个人都能预见到互联网行将变成更为庞大的产业，尽管没人确切知道它是如何做到的。一种观点认为 **信息聚合** 将席卷整个互联网产业。最初为了使两端——服务端，与从服务端抓取文档的客户端——间的简单交流成为可能而建立的互联网，将因一种在一系列频道中重新打包并分发所有网站的新标准而蜕变。Kevin Werbach，*Release 1.0*，90 年代一封在投资者中影响深远的通讯的作者，曾预测信息聚合“会演化为互联网生态的核心模式，在允许企业和个人享受大规模、大范围的益处同时，保留对他们网络形象的控制。”[^1] 他邀请他的读者一同想象这样的未来，剑术迷能够直接在他们最爱的网站上通过嵌入其中的网购插件买一把新的重剑，而非直接去“在线运动品商店”或“击剑设备零售商”。[^2] 就如同电视世界中，大的网络提供商能够将他们的节目聚合到一个较小的地方电视台，网络上的信息聚合能使销售商和出版商通过大量的中间站点接触到消费者。这意味着，作为结论，消费者会在与销售商和出版商互动上，拥有天时地利人和的选择权。
+_本文的另一个版本也曾发表于 [Vice News](https://www.vice.com/en_us/article/a3mm4z/the-rise-and-demise-of-rss)。_
 
-RSS 是承诺提供这样的聚合化未来的标准之一。对于 Werbach，RSS 是“轻量级聚合协议的领先范例。”[^3] 另一篇同期文章将 RSS 称为第一个意识到 XML 的潜力的协议。[^4] 它正成为使用户与内容整合者能够从必须提供一切信息的网站中创造个性化定制的频道的一种方式。而现在，二十年后，RSS [像是成为了一种将死的技术](https://trends.google.com/trends/explore?date=all&geo=US&q=rss)，仅仅主要被播客与程序员们的科技博客使用。此外，在后来的群体中，比起实际效用，RSS 可能更主要因其政治上的象征意义而被使用。尽管有些人确实有 RSS 读者，并顽固地为博客加入 RSS 服务，这在 2018 年也是一种十分保守的表态。那个小小的橘子泡（译注：指 RSS 标志）已然成为一个象征着对与 Werbach 的想象中的聚合网络一点也不像的巨头垄断式中心化网络的反抗标志。
+大约在十年多前，随便一位网民可能都听说过 RSS。RSS 的全称有两个版本，你可以叫它“真正简单的整合” (Really Simple Syndication)，也可以叫它“丰富站点摘要” (Rich Site Summary)，这取决于你问的是谁。它是一种标准，网站和播客可以通过它向用户提供内容订阅源，并且这种格式能被各种各样的电脑程序轻松解析。然而时至今日，尽管 RSS 仍在为网络上的许多应用提供着动力，但对大多数人来说，它已经成了一门鲜为人知的“古老”技术。
 
-RSS 的未来曾是如此光明。那到底是发生了什么呢？难道它的衰落是不可避免的？还是它在一个单一 RSS 标准的发展中因内斗而落没？
+要说清 RSS 的故事，我们得从两条线索讲起。第一条线索，是关于一个宏大却从未完全实现的Web未来构想。第二条线索，则是一场本想齐心协力改进流行标准的技术合作，最终如何演变成了开源软件开发史上最激烈的“路线之争”之一。
+
+时间回到上世纪 90 年代末，那是一个介于 Netscape 上市和互联网泡沫破灭之间的狂飙突进的年代。所有人都预感到，互联网将掀起比以往更巨大的浪潮，尽管没人能确切说出浪潮将涌向何方。当时有一种流行的理论：内容整合 (syndication) 将彻底改变整个 Web。最初，Web 的设计只是为了实现一次简单的双方交易——客户端从一台主机服务器上获取一份文档。但新的标准将打破这一模式，它允许人们将整个网站的内容重新打包，通过五花八门的渠道再次分发。Kevin Werbach 在当时极具投资者影响力的时事通讯 _Release 1.0_ 中预言，内容整合“将演化为互联网经济的核心模型，让企业和个人既能掌控自己的线上形象，又能享受到巨大规模和范围带来的红利。”[^1]
+
+他邀请读者想象这样一幅未来图景：一位击剑爱好者想买一把新重剑，他不必再访问“在线体育用品商店”或“击剑器材零售商”的网站，而是可以直接在他最喜欢的击剑主题网站上，通过嵌入的电子商务插件完成购买。[^2] 这就像电视界的大型电视网将节目授权给地方小电视台播放一样，Web 上的内容整合能让商家和媒体通过无数个中间站点触达消费者。而这自然也意味着，消费者将获得前所未有的控制权，可以自由选择在何时、何地、以何种方式与商家或媒体互动。
+
+RSS，正是当年被寄予厚望、能够实现这一“整合未来”的标准之一。在 Werbach 看来，RSS 是“轻量级内容整合协议的杰出代表”。[^3] 同一时期的另一篇文章则称 RSS 是首个真正发挥出 XML 潜力的协议。[^4] 无论是普通用户还是内容聚合平台，都可以利用它，从浩如烟海的 Web 信息中打造出属于自己的个性化频道。然而二十年过去了，社交媒体巨头崛起，Google Reader 也被送进了坟墓，RSS 似乎成了一项 [日渐式微的技术](https://trends.google.com/trends/explore?date=all\&geo=US\&q=rss)，如今只有播客作者、技术博主和少数记者还在使用它。当然，还是有一小撮人顽固地坚守着 RSS 阅读器。但在 2018 年的今天，给自己的博客加上 RSS 订阅选项，本身就是一种政治姿态。那个小小的橙色图标，已经成为一个怀旧的符号，象征着对那个由少数几家公司控制的中心化网络的无声反抗——这个网络，与 Werbach 当年想象的整合世界，早已判若云泥。
+
+RSS 的未来曾一片光明。到底发生了什么？它的衰落是历史的必然，还是那场阻碍其标准统一的激烈内斗加速了它的灭亡？
 
 ## 浑水
 
-RSS 曾两度被发明。这意味着，它从未有过一个明白无误的拥有者，一系列的事务又催生了无止境的争吵与辩论。但这也同时表明，作为一个重要想法， RSS 的时代已经到来。
+RSS 其实被发明了两次。这意味着它从未有过一个明确的“主人”，这种权责不清的局面引发了无尽的争论和敌意。但这也恰恰说明，RSS 是一个顺应时代潮流的重要思想。
 
-1998 年，网景正竭力想象自己的未来。它的旗舰产品，曾一度被 80% 的互联网用户所选择的网景浏览器，正在 IE 浏览器前迅速失去份额。所以网景决定在一个全新的领域竞争。五月份，一个小组被组建起来，开始了后来被内部称为“Project 60”的项目。[^5] 两个月后，网景宣布了“My Netscape”，一个与其他互联网门户如雅虎，MSN 及 Excite 相竞争的互联网门户。
+1998 年，Netscape 正挣扎于生死存亡之秋，苦苦思索着公司的未来。它的旗舰产品——曾占据超过 80% 市场份额的 Netscape Navigator 浏览器——正被 Microsoft 的 Internet Explorer 迅速蚕食。于是，Netscape 决定开辟新战场。当年 5 月，公司集结了一个团队，启动了内部代号为“60号项目”的计划。[^5] 两个月后，Netscape 推出了名为“My Netscape”的门户网站，意图与 Yahoo、MSN 和 Excite 等当时的门户巨头一较高下。
 
-第二年三月，网景宣布了一个叫"My Netscape Network"的 My Netscape 门户扩展。My Netscape 用户现在可以自定义他们的 My Netscape 页面所以它包含了名为“channels"的功能，汇集网络上最近的头条新闻。只要你最爱的网站发布了一个由网景规定格式的特殊文件，一般只需点击网站在其界面提供的“Add Channel”按键，你就能把这个网站添加到你的 My Netscape 页面。如此，一个包含着一列相关头条的小盒子就会出现。
+第二年三月，Netscape 为 My Netscape 门户网站增加了一项新功能，名为“My Netscape Network”。用户可以在自己的 My Netscape 页面上进行个性化定制，添加来自全网各大站点的“频道”，展示最新的头条新闻。只要你喜欢的网站按照 Netscape 的规定格式发布一个特殊文件，你就能把它添加到你的 My Netscape 页面上。通常，参与的网站会在页面上放置一个“添加频道”的按钮，用户点击一下，一个包含最新链接标题的小窗口就会出现在他们的门户页上。
 
-![mnn-channel](https://s1.ax1x.com/2018/09/22/iupTPJ.gif)
+![一个 My Netscape Network 频道](https://s1.ax1x.com/2018/09/22/iupTPJ.gif) 
 
-这个参与网站必须发布的特殊文件就是一个 RSS 文件。在 My Netscape Network 的声明中，网景解释称 RSS 代表着”RDF Site Summary“。[^6] 这多少有几分用词不当。RDF，全称 Resource Description Framework，主要是一个描述各种资源属性的语法（如果感兴趣的话，看 [我的关于语义网的这篇文章](https://twobithistory.org/2018/05/27/semantic-web.html)）。1999年，W3C 组织开始考虑 RDF 的规范草案。尽管 RSS 应该是基于 RDF 的，网景释出的示例 RSS 文件却没有用任何 RDF 标签，即使它声明了 RDF XML 命名空间。在一份与网景 RSS 规范一同释出的文件中，规范作者之一的 Dan Libby 解释称“在 MNN 的发布中，网景曾有意的限制了 RSS 格式的复杂性”。[^7] 这份规范的版本号是 0.90，因为他们相信在 W3C 的 XML 规范与新的 RDF 标准下，RSS 接下来的版本会更加完善。
+_图注：一个 Mozilla.org 的 My Netscape Network 频道，在用户即将把它添加到 My Netscape 页面时大概就是这个样子。_
 
-RSS 曾被 Libby 与 Ramanathan Guha，另一个网景雇员一同定义。Guha 之前在苹果公司工作，并在那里提出了 Meta Content Framework。MCF 是一个意图描述从网页到本地文件等一切的表示元数据格式。Guha 为证明其力量，开发了一个名为 [HotSauce](http://web.archive.org/web/19970703020212/http://mcf.research.apple.com:80/hs/screen_shot.html) 的程序，能在 3D 空间中以节点网络的形式可视化显示文件间关系。在离开苹果加入网景后，Guha 与 Tim Bray，一个网景顾问，一同为制作一个基于 XML 版本的 MCF 而工作，而这成为了 W3C 的 RDF 草案的基础。[^8] 之后，不出意外的，Guha 与 Libby 急于将 RDF 合并进 RSS。但 Libby 后来写道，由于时间限制及 RDF “对于‘一般用户’太‘过于复杂’”，基于 RDF 的 RSS 比之最初的设想，削减了很多。[^9]
+网站们需要发布的那个特殊文件，就是一个 RSS 文件。在 My Netscape Network 的发布公告中，Netscape 解释说 RSS 是“RDF 站点摘要” (RDF Site Summary) 的缩写。[^6] 这个名字其实有点误导人。RDF，即资源描述框架 (Resource Description Framework)，本质上是一种用来描述任意资源属性的语法。(如果你对此很感兴趣，可以读读我那篇关于 [语义网 (Semantic Web) 的文章](/2018/05/27/semantic-web.html)。) 1999 年，万维网联盟 (W3C)——Web 世界的主要标准制定机构——正在审议 RDF 的规范草案。尽管 RSS 号称基于 RDF，但 Netscape 发布的示例文件里却根本没用任何 RDF 标签。RSS 规范的作者之一 Dan Libby 在一份配套文档中解释说：“在 MNN 的这个版本里，Netscape 有意限制了 RSS 格式的复杂性。”[^7] 该规范的版本号被定为 0.90，言下之意是，后续版本会让 RSS 逐渐向 W3C 的 XML 规范和不断演进的 RDF 规范草案看齐。
 
-正当网景努力在后来被称为“门户大战”的竞争中夺人眼球时，一种闻名为“博客”的现象正在互联网的其他地方悄然登场。[^10] Dave Winery 正是那些先驱者之一，他是一家叫 UserLand Software 的公司的 CEO，这家公司开发了早期的内容管理系统，能让非技术娴熟的人更容易地书写博客。Winer 经营着他名为 [Scripting News](http://scripting.com/) 的个人博客，这也是网上现存的最古老的博客之一。在1997 年的 12 月 15 日，网景宣布 My Netscape Network 一年多以前，Winer 发布了一篇文章宣布博客现在已能通过 XML 与 HTML 一同获得。[^11]
+RSS 是由 Libby 和另外两位 Netscape 员工 Eckart Walther、Ramanathan Guha 共同创造的。根据 Guha 在邮件中的回忆，最初是他和 Walther 在 Libby 的一些建议下捣鼓出了 RSS 的雏形。1998 年 AOL 收购 Netscape 后，他和 Walther 相继离开，RSS 的后续发展就落到了 Libby 肩上。在加入 Netscape 之前，Guha 曾在 Apple 公司工作，并提出了一个名为“元内容框架” (Meta Content Framework, MCF) 的概念。MCF 是一种用来表示元数据 (metadata) 的格式，无论是网页还是本地文件，它都能描述。为了展示其威力，Guha 开发了一款名为 [HotSauce](http://web.archive.org/web/19970703020212/http://mcf.research.apple.com:80/hs/screen_shot.html) 的应用，能将文件间的关系以三维空间中悬浮的节点网络形式可视化。离开 Apple 加入 Netscape 后，Guha 立即与一位名叫 Tim Bray 的顾问合作。Bray 在博客中提到，他和 Guha 最终做出了一个基于 XML 的 MCF 版本，而这个版本又成了 W3C 的 RDF 草案的基础。[^8] 毫无疑问，Guha、Walther 和 Libby 都希望能延续 Guha 此前的工作，将 RDF 融入 RSS。但 Libby 后来写道，由于时间紧迫，加上当时普遍认为 RDF 对“普通用户”来说“太复杂”，最初那个基于 RDF 的宏大构想最终被打了折扣。[^9]
 
-Dave Winer 的 XML 格式闻名为 Scripting News 格式。它可能与微软的 Channel Definition 格式（一个在 1997 年 3 月提交给 W3C 的“推送技术”标准）相似，但我并不能找到一个原始格式的文件来验证这个说法。[^12] 如同网景的 RSS，它组织了 Winer 的博客内容以便于其他的软件应用理解。当网景发布 RSS 0.90 时，Winer 与 UserLand Software 开始同时支持两种格式。但 Winer 相信网景的格式“极其劣质”且“失去了网络作者与读者需要的关键”。[^13] 它只能表现一列链接，反之，Scripting News 格式能够表现一系列的段落，每个都能包含一个或多个链接。
+就在 Netscape 投身于后来被称为“门户大战”的流量争夺战时，一种名为“网络日志” (weblogging) 的新事物正在 Web 的另一角悄然兴起。[^10] Dave Winer 便是其中的一位先驱。他是 UserLand Software 公司的 CEO，这家公司开发的早期内容管理系统，让许多不精通技术的人也能轻松写博客。Winer 自己也运营着一个博客，名为 [Scripting News](http://scripting.com)，至今仍是互联网上最古老的博客之一。早在 Netscape 发布 My Netscape Network 的一年多前，即 1997 年 12 月 15 日，Winer 就宣布他的博客将同时提供 XML 和 HTML 两种格式。[^11]
 
-1999 年 6 月，网景宣布 My Netscape Network 两个月后，Winer 介绍了 Scripting News 格式的新版本，称为 ScriptingNews 2.0b1。Winer 声称曾尝试与网景获得联系以指出 RSS 0.90 的不足但失败了，只好决定继续完善他自己的格式。[^14] Scripting News 格式的新版本在 `<header>` 元素中加入了几个新项目以使 Scripting News 格式与 RSS 同等。但这两种格式继续与 Scripting News 格式—— Winer 昵称其为“胖”聚合格式，能够包含整个段落，而非仅仅是链接——不同。
+Dave Winer 的这种 XML 格式后来被称为 Scripting News 格式。据说它和 Microsoft 的“频道定义格式” (Channel Definition Format, 一种在 1997 年 3 月提交给 W3C 的“推送技术”标准) 很相似，但我没能找到原始文件来证实这一点。[^12] 和 Netscape 的 RSS 一样，它也将 Winer 博客的内容结构化，以便其他软件能够理解。当 Netscape 发布 RSS 0.90 后，Winer 和他的 UserLand Software 公司开始同时支持这两种格式。但 Winer 认为 Netscape 的格式“严重不足”，并且“缺少了网站作者和读者最需要的东西”。[^13] Netscape 的格式只能呈现一个链接列表，而 Scripting News 格式却能呈现一系列段落，每个段落里还可以包含一个或多个链接。
 
-网景在第二个月宣称 RSS 0.91 将会放出。这个更新的规范是一个大转变。 RSS 不再表示"RDF Site Summary"；它现在代表"Rich Site Summary"。所有的 RDF——已经几乎没有了的——被剥离。许多 Scripting News 标签被合并。在新规范的文本中，Libby 解释道：
+1999 年 6 月，也就是 Netscape 宣布 My Netscape Network 两个月后，Winer 推出了 Scripting News 格式的新版本——ScriptingNews 2.0b1。Winer 声称，他之所以决定自己动手，是因为他曾试图让 Netscape 的人关注 RSS 0.90 的缺陷，但却无人理睬。[^14] 新版的 Scripting News 格式在 `<header>` 元素中增加了几项，使其在功能上与 RSS 看齐。但两者依然存在一个关键区别：Winer 戏称为“胖”整合格式的 Scripting News，可以包含完整的段落，而不仅仅是链接。
 
-> RDF 引用被移除了。RSS 最初被构思为一个提供网站摘要的元数据格式。两件事变得明了了：第一个是提供者更想要一个聚合格式而非元数据格式。RDF 文件的结构非常严格，而且符合 RDF 的数据模型为了使其有效。这并不能很容易地被人所理解，而且非常难以创建有用的 RDF 文件。第二个问题是只有很少的工具可用于 RDF 部署，验证与处理。因为上述原因，我们决定附属于一个标准的 XML 途径。[^15]
+Netscape 紧接着在下个月就发布了 RSS 0.91。这次的更新堪称一次 180 度大转弯。RSS 不再是“RDF 站点摘要”的缩写，而是变成了“丰富站点摘要”。所有的 RDF 元素——本来也几乎没有——被悉数移除，同时吸收了许多 Scripting News 格式的标签。在新规范的说明中，Libby 这样解释：
 
-Winer 对 RSS 0.91 非常满意，称之“出乎意料的更好”[^16] UserLand Software 将其采用为已存在的 ScriptingNews 2.0b1 格式的替代。一下子，RSS 貌似终于有了一个单一的权威规范。
+> RDF 相关引用已被移除。RSS 最初的构想是作为一种提供网站摘要的元数据格式。但现在两点已经很明确：首先，内容提供者更需要的是一种内容整合格式，而非元数据格式。RDF 文件的结构非常严谨，必须遵循 RDF 数据模型才能生效，这对人类来说不易理解，也让创建有用的 RDF 文件变得困难。其次，市面上几乎没有可用于生成、验证和处理 RDF 的工具。基于这些原因，我们决定采用标准的 XML 方式。[^15]
 
-## 大分叉
+Winer 对 RSS 0.91 极为满意，称其“比我预想的还要好”。[^16] UserLand Software 公司随即采用它取代了自家的 ScriptingNews 2.0b1 格式。在当时看来，RSS 似乎终于有了一份统一的、权威的规范。
 
-一年后，RSS 0.91 规范变得严重不充分。人们想用 RSS 处理种种标准未处理的事情。规范的另一些部分看起来则是毫无必要的约束——比如每个 RSS 频道最多只能包含 15 项。
+## 大分裂
 
-在那时，RSS 已经被更多的几个组织所接受。与看起来在 RSS 0.91 后已失去兴趣的网景不同，大玩家分别是 Dave Winer 的 UserLand Software；经营着一个名为 Meerkat 的 RSS 聚合器的 OReilly Net；以及同样经营着一个专注于新闻的 RSS 聚合器的 Moreover.com。[^17] 通过邮件列表，这些组织的代表与其他人定期讨论如何改良 RSS 0.91。但关于如何改良的问题他们也有着深远的分歧。
+一年之后，RSS 0.91 规范也显得捉襟见肘了。人们想用 RSS 做各种各样的事情，但规范却无法满足需求。规范中的某些限制也显得毫无必要——比如，每个 RSS 频道最多只能包含 15 个项目。
 
-发生最多讨论的邮件列表被称为信息聚合邮件列表（译注：the Syndication mailing list，暂译）。[一份信息聚合邮件列表的存档](https://groups.yahoo.com/neo/groups/syndication/info) 现在仍可获得。这是一份令人惊异的历史资源。它给出了那些分歧是如何最终导致 RSS 社区的政治决裂的实时说明。
+到那时，已经有更多的组织采纳了 RSS。除了在 0.91 版本后就似乎兴味索然的 Netscape，牌桌上的主要玩家包括 Dave Winer 的 UserLand Software、运营着 RSS 聚合器 Meerkat 的 O’Reilly Net，以及同样运营着新闻类 RSS 聚合器的 Moreover.com。[^17] 这些组织的代表们通过邮件列表，定期讨论如何改进 RSS 0.91。但在改进的方向上，他们之间存在着深刻的分歧。
 
-首当其冲的一方是 Winer。Winer 对于改善 RSS 非常急躁，但他想要以相对保守的方式来改变它。在 2000 年 6 月，他在 UserLand 网站上公布了他自己的 RSS 0.91 标准，意味着 RSS 更深一层发展的起点。它对网景公布的 RSS 0.91 标准没有任何的重大改变。Winer 在一篇博文中声称伴随着他的标准的仅仅是一份必要的 RSS 如何在真实环境被使用的“清理”文档，因为网景的标准已经不再维护。[^18] 同一篇文章中，他认为 RSS 之所以成功，是因为它足够简单，如果将命名空间或 RDF 再添加到这个格式中——在信息聚合邮件列表中的一些人已经建议做这些事——它“会极大地复杂化，恕我直言，在内容提供者层面，提升复杂性什么都给我们带来”。几乎同时，在一则被发到信息聚合邮件列表的信息中，Winer 建议，那些问题已经足够重要，这可能使他去创建一个分支：
+这场讨论主要发生在一个名为“整合” (Syndication) 的邮件列表里。[该邮件列表的存档](https://groups.yahoo.com/neo/groups/syndication/info) 至今仍可访问，是一份惊人的历史资料。它逐分逐秒地记录了这些深刻的分歧最终如何撕裂了整个 RSS 社区。
 
-> 我仍在思考如何使 RSS 继续发展。我当然想要在 RSS2 中使用 冰一样的东西，发布与订阅在我的列表顶部，但我将竭力维护简单性。我喜欢可选的元素。我不想走命名空间与提要的老路，或者试着把它变成 RDF 的一种方言。我理解某些人想要这样，因此我猜我们走到了一个分岔点。我对另一条路将会走向何方有着自己的见解，但至少在现在我不会将这些公之于众。[^19]
+站在这场分裂风暴一侧的，是 Winer。他迫切地想要推动 RSS 的演进，但只希望以一种相对保守的方式进行。2000 年 6 月，他在 UserLand 网站上发布了自己版本的 RSS 0.91 规范，作为后续开发的起点。这个版本与 Netscape 发布的 0.91 规范相比，并无重大改动。Winer 在一篇配套的博客文章中声称，这只是一次“清理”工作，旨在记录 RSS 在实际应用中的情况，因为 Netscape 的官方规范已经无人维护。[^18] 在同一篇文章中，他坚称 RSS 之所以成功，关键在于其简单性。他认为，如果在格式中重新加入命名空间 (namespaces，一种区分不同 RSS 词汇的方式) 或 RDF——这是邮件列表里一些人的提议——将会“使其变得极其复杂，恕我直言，对于内容提供者来说，这种复杂性几乎带不来任何好处。” 在差不多同一时间发给“整合”邮件列表的一封邮件中，Winer 暗示这些分歧非常严重，甚至可能导致他另起炉灶：
 
-一起反对 Winer 的是其他几个人，包括 O'Reilly 的 Rael Dornfest，Ian Davis（一家名为 Calaba 的搜索初创企业的负责人），与一位早熟的 14 岁少年 Aaron Swartz，他们都认为 RSS 需要命名空间以容纳大家想要用它处理的许多不同事物。在另一个由 O'Reilly 主办的邮件列表中，Davis 提出了一个基于命名空间的模块系统，写道这样一个系统会“使 RSS 比起往过复杂的规范中填充新功能，能像我们想要的那样可扩展”。[^20] “命名空间阵营”相信 RSS 很快会比起作为博客文章聚合，能被用的更多，所以命名空间不是成为并发症，而是保持 RSS 在处理越来越多的情况时保持可被管理的唯一办法。
+> 我仍在思考如何推动 RSS 向前发展。我非常希望在 RSS2 中加入类似 ICE 的功能，发布和订阅是我的重中之重，但我会为了保持简单性而斗争到底。我喜欢可选元素。我不想走上命名空间和模式 (schema) 的道路，也不想把它变成 RDF 的一种方言。我理解其他人想这么做，所以，我猜我们最终会走向分裂 (fork)。对于另一条路会通向何方，我有自己的看法，但至少现在，我会保留这些看法。[^19]
 
-关于命名空间的争论，其根源在于 RSS 究竟为何这一问题更深层面的意见不一。Winer 为了同步聚合他博客的博文而创造了他的 Scripting News 格式。Guha 与 Libby 在网景设计了 RSS 并称其为“RDF Site Summary”，因为在他们脑中这是一个在网景的在线门户中以缩略重写一个网站的方法。Davis 在写给 Syndication 邮件列表时解释称他认为 RSS “最初被构思为一个建立迷你站点地图的方法”，现在他和其他人想扩展 RSS “以比起简单的新闻标题包含更多种类的信息，及满足过去十二个月里出现的 RSS 的新应用”。[^21] Winer 写了一篇多刺的回复，陈述称他的 Scripting News 格式事实上是原本的 RSS，而且它已经有了不同的目的。鉴于参与 RSS 开发的大多数人在 RSS 为何被创造一事上意见不合，一个分支看起来是不可避免的。
+与 Winer 对立的是另外几位人物，包括 O’Reilly 的 Rael Dornfest、搜索创业公司 Calaba 的负责人 Ian Davis，以及一位年仅 14 岁的早慧少年 Aaron Swartz。没错，就是后来共同创办了 Reddit 并以其黑客行动主义闻名的那个 Aaron Swartz。(据 Davis 在邮件中回忆，2000 年时，他父亲还经常陪他参加技术圈的聚会。) Dornfest、Davis 和 Swartz 都认为，为了满足五花八门的应用需求，RSS 必须引入命名空间。在 O’Reilly 主持的另一个邮件列表里，Davis 提出了一个基于命名空间的模块化系统，他写道，这样的系统能“让 RSS 随心所欲地扩展，而不是硬塞进各种新功能，把规范搞得越来越复杂。”[^20] “命名空间阵营”相信，RSS 的用途很快将远不止于聚合博客文章，因此，命名空间非但不是累赘，反而是防止 RSS 在支持越来越多用例后变得难以管理的唯一出路。
 
-分支发生在 Dornfest 宣布提出 RSS 1.0 标准并形成 RSS-DEV 工作团队——将会包括 Davis, Swartz及其他几位但并没有 Winer——以对发表做好准备。在被提出的标准中，RSS 再一次代表“RDF Site Summary”，因为 RDF 已经又被加了回来以代表几个 RSS 元素的元数据属性。这份标准承认了 Winer 的名字，给了他通过他的“传道”推广 RSS 的声誉。[^22] 但它也指出仅仅给 RSS 添加更多的元素而没有通过一个模块系统提供可扩展性——这正是 Winer 所建议的——“牺牲了可扩展性”。这份标准继续为 RSS 定义一个基于 XML 命名空间的模块系统。
+对命名空间的分歧，其根源在于对 RSS 究竟为何物这一根本问题的不同理解。Winer 当初发明 Scripting News 格式，是为了聚合自己博客的文章。Netscape 发布 RSS 时称其为“RDF 站点摘要”，是想在 My Netscape 门户里微缩式地重建一个个网站。有些人觉得，应该尊重 Netscape 最初的愿景。Davis 在给“整合”邮件列表的信中阐述了他的观点：RSS“最初的构想是用来建立迷你版的网站地图”，而现在，他和同伴们希望扩展 RSS，“使其能包含新闻标题之外更多类型的信息，并满足过去 12 个月里涌现出的新用途。”[^21] 这个观点不无道理，因为 Netscape 的 RSS 项目最初的目标甚至比 Davis 描述的还要宏大：Guha 曾告诉我，他想创造一种技术，不仅能支持网站频道，还能支持关于任意实体 (比如歌手麦当娜) 的信息源。从这个角度看，进一步发展 RSS 以实现这一目标，确实符合其初衷。但 Davis 的论点也夸大了 Netscape 在发布 RSS 规范时内部愿景的统一程度。据我与 Libby 的邮件交流，即便在 Netscape 内部，最终也分裂为“我们来构建语义网吧”和“我们把它做得简单点，方便大家用”两个派别。
 
-Winer 对于 RSS-DEV 工作团队自行霸占了“RSS 1.0”之名非常愤怒。[^23] 在另一个关于分散化的邮件列表中，他将 RSS-DEV 工作团队的作为描述为剽窃。[^24] 聚合邮件列表的其他成员也感觉 RSS-DEV 工作团队在社区就如何发展 RSS 这一问题上达成一致之前不该使用“RSS”的名字。但是工作团队坚持使用这个名字。Dan Brickley，RSS-DEV 工作团队的一个成员，为这个决定辩护称“提议中的 RSS 1.0 绝对是基于原始的 RSS 的愿景，其本身曾有相当的遗产影响了 MCF （一个 RDF 的前身）与相关的规格（CDF 等）”。[^25] 他基本上感觉比起 Winer，RSS 1.0 的努力对 RSS 之名有着更好的声明，因为 RDF 原来就是 RSS 的一部分。RSS-DEV 工作团队在 12 月发布了他们的标准的最终版本。同一个月，Winer 发布了他自己对于 RSS 0.91 的改进，他在 UserLand 网站上将其称为 RSS 0.92。RSS 0.92 对 RSS 做了一些小的可选改进，很快增加的 `<enclosure>` 标签被大范围用于播客。RSS 有了官方的分支。
+而 Winer 则认为，Netscape 最初的目标根本不重要，因为他的 Scripting News 格式才是 RSS 的鼻祖，且其初衷截然不同。鉴于 RSS 开发的核心参与者们在“谁创造了 RSS”以及“为何创造”这两个根本问题上都无法达成一致，分裂似乎已在所难免。
 
-我仍不清楚为何没能更好地让 Winer 进入 RSS-DEV 工作团队中。正如工作团队中的人们承认的，他是聚合邮件列表中的一名杰出贡献者，且对 RSS 的流行有着显著的贡献。但 Tim O'Reilly，O'Reilly 的创始人与 CEO，在一个 UserLand 讨论组中解释道 Winer 或多或少地拒绝了参与：
+当 Dornfest 宣布了一份提议中的 RSS 1.0 规范，并组建了 RSS-DEV 工作组来筹备发布时，分裂最终发生了。这个工作组里有 Davis、Swartz 和其他几位成员，但没有 Winer。在提议的规范中，RSS 的全称又变回了“RDF 站点摘要”，因为 RDF 被重新引入，用于表示某些 RSS 元素的元数据属性。规范指名道姓地感谢了 Winer，称赞他通过“传道式”的热情推广了 RSS。[^22] 但规范也指出，RSS 不能按照 Winer 倡导的方式去改进。仅仅向 RSS 添加更多元素，而不通过模块系统提供可扩展性，将“牺牲其可伸缩性 (scalability)”。规范接着定义了一套基于 XML 命名空间的 RSS 模块系统。
 
-> 一群参与了 RSS 的人聚在一起以思考其未来的演变。Dave 是团队的一部分。当团队的一致意见转向了他不喜欢的方向时，Dave 停止了参与，并将其表现得像是 O'Reilly 图谋从他那接管 RSS ，罔顾 O'Reilly 的 Rael Dornfest 只是被提议的 RSS 1.0 标准众多作者之一的事实，且作者中的很多人在开发中都有着与 Dave 同等的历史。[^26]
+Winer 觉得 RSS-DEV 工作组擅自取名“RSS 1.0”是“不公平的”。[^23] 在另一个关于去中心化的邮件列表里，他写道自己“最近有个标准被一个大牌给偷了”，矛头直指召集了 RSS-DEV 工作组的 O’Reilly。[^24] “整合”邮件列表里的其他成员也认为，在社区就 RSS 的未来达成一致之前，RSS-DEV 工作组不该使用“RSS”这个名字。但工作组坚持己见。工作组的另一位成员 Dan Brickley 辩护道：“我们提议的 RSS 1.0 牢牢植根于 RSS 的最初愿景，而这一愿景本身可以追溯到 MCF (RDF 的前身) 和其他相关规范 (如 CDF) 的悠久传统。”[^25] 他基本上认为，既然 RDF 本就是 RSS 的一部分，那么 RSS 1.0 的努力比 Winer 更有资格继承“RSS”这个名号。RSS-DEV 工作组在当年 12 月发布了规范的最终版。同月，Winer 在 UserLand 网站上发布了他自己对 RSS 0.91 的改进版，命名为 RSS 0.92。RSS 0.92 对 RSS 做了一些小的、可选的改进，其中就包括了后来被播客界广泛采用的 `<enclosure>` 标签。至此，RSS 正式分裂。
 
-对此，Winer 曾言：
+如果当初能更努力地将 Winer 纳入 RSS-DEV 工作组，这场分裂或许本可避免。他显然是理应在席的。他是“整合”邮件列表的杰出贡献者，对 RSS 的普及功不可没，这一点连工作组成员自己都承认。但正如 Davis 在邮件中所写，Winer“想要控制权，希望 RSS 成为他的个人遗产，所以不愿与我们合作。” O’Reilly 的创始人兼 CEO Tim O’Reilly 在 2000 年 9 月的一个 UserLand 讨论组中解释说，Winer 基本上是拒绝参与合作：
 
-> 我在那份声明的两周前碰到了 Dale [Dougherty]，他对于其将被称为 RSS 1.0 的事什么都没说。在其被宣布之前的周五，我与 Rael 通了电话，同样他也没说他们将称之为 RSS 1.0。在其公开宣布时我才知道。
+> 一群参与 RSS 的人聚在一起，开始思考它的未来发展。Dave 也是其中一员。但当团队的共识转向了他不喜欢的方向时，Dave 就退出了，并把这描绘成 O’Reilly 企图从他手中夺取 RSS 的阴谋，尽管 O’Reilly 的 Rael Dornfest 只是 RSS 1.0 提案的十几位作者之一，而且许多参与开发的成员在 RSS 领域的资历至少和 Dave 一样长。[^26]
 
-> 让我问你一个直接的问题。如果证明了那份标准被命名为“RSS 1.0”的计划完全被秘密的完成，没有任何的预先通知或是商议，或者是一个让聚合邮件列表里的成员们同意与否的机会，而且不仅仅是我，你会做什么？
+对此，Winer 回应道：
 
-> UserLand 为创造、普及与支持 RSS 做了大量的工作。我们离开了，让你们这些家伙拥有了这个名字。这就是高层。如果我想对网络聚合做任何进一步的工作，我必须用一个不同的名字。Tim 为什么又怎么会这样？[^27]
+> 在他们宣布的两周前，我见了 Dale [Dougherty]，他压根没提要叫 RSS 1.0。在宣布前的那个周五，我和 Rael 通了电话，他也只字未提他们要叫它 RSS 1.0。我是直到公之于众时才第一次听说。
+>
+> 让我直接问你一个问题。如果事实证明，将新规范命名为“RSS 1.0”的计划是私下决定的，没有任何事先通知或协商，也没给‘整合’邮件列表的成员们——不只是我——任何同意或反对的机会，你打算怎么办？
+>
+> UserLand 为了创造、推广和支持 RSS 付出了巨大努力。我们放弃了这些，让你们的人拿走了这个名字。这是最根本的问题。如果我今后想在 Web 整合领域做任何事，我都得用一个新名字。Tim，这到底是为什么，又是怎么发生的？[^27]
 
-我不能在聚合邮件列表中找到任何在使用 RSS 1.0 名称声明的提议前的讨论。
+我没能在“整合”邮件列表的存档中找到任何在 RSS 1.0 提案公布前关于命名问题的讨论。Winer 在给我的消息中表示，他并非想控制 RSS，只是想在自己的产品里使用它。
 
-RSS 在 2003 年将再度分支，当时几位开发者对于 RSS 社区中的争吵感到非常沮丧，于是寻求创造一个全新的格式。这些开发者创造了 Atom，一个废除了 RDF 而拥抱 XML 命名空间的格式。Atom 最终被 [一个提议的 IETF 标准](https://tools.ietf.org/html/rfc4287) 所规定。在 Atom 的推行之后，有了三个相竞争的 RSS 版本：Winer 的 RSS 0.92（在 2002 年升级为 RSS 2.0 并被重命名为“Really Simple Syndication”），RSS-DEV 工作团队的 RSS 1.0，以及 Atom。
+2003 年，RSS 再次分裂。几位对 RSS 社区无休止的争吵感到厌倦的开发者，试图创造一种全新的格式。他们创造了 Atom，一种摒弃了 RDF 但拥抱了 XML 命名空间的格式。Atom 最终由 [一项提议的 IETF 标准](https://tools.ietf.org/html/rfc4287) 进行了规范。Atom 诞生后，市面上出现了三个相互竞争的 RSS 版本：Winer 的 RSS 0.92 (于 2002 年升级为 RSS 2.0，并更名为“真正简单的整合”)、RSS-DEV 工作组的 RSS 1.0，以及 Atom。
 
 ## 衰落
 
-相竞争的 RSS 标准的增加可能在我会简短讨论的其他方面阻碍了 RSS。但这并没有阻止 RSS 在 2000 年间变得极为流行。2004 年，纽约时报开始用 RSS 提供其新闻摘要并写了一篇文章对外行人解释何为 RSS 与如何使用。[^28] Google Reader，一个最终被数百万人使用的 RSS 聚合器，在 2005 年面世。2013 年，RSS 看起来已足够流行到纽约时报，在其对 Aaron Swartz 的讣告中，称之为“无所不在的”技术。[^29] 一时间，在整个世界三分之一的人都注册了 Facebook 前，RSS 一直是网络上很多人了解最新新闻的渠道。
+多个 RSS 规范并存的局面，可能从其他方面也阻碍了 RSS 的发展，这一点我稍后会谈到。但这并没能阻止 RSS 在 21 世纪的头十年里风靡一时。到 2004 年，《纽约时报》开始用 RSS 提供头条新闻，并专门刊文向普通读者解释什么是 RSS 以及如何使用它。[^28] 2005 年，最终拥有数百万用户的 RSS 聚合器 Google Reader 问世。到 2013 年，RSS 的普及程度似乎让《纽约时报》在为 Aaron Swartz 撰写的讣告中，称其为一项“无处不在”的技术。[^29] 曾几何时，在地球上三分之一的人口注册 Facebook 之前，RSS 就是许多人获取互联网新闻的主要方式。
 
-纽约时报在 2013 年一月发行了 Swartz 的讣告。然而到了那个时候， RSS 事实上已经到了拐点，并在其成为一个鲜为人知的技术之路上渐行渐远。Google Reader 在 2013 年七月被关闭，表面上是因为“在过去几年间”用户数量一直在下降。[^30] 这引出了几篇不同途径的文章宣称 RSS 已死。但多年来人们一直宣称 RSS 已死，甚至在 Google Reader 关闭之前。Steve Gillmor，在 2009 年五月为 TechCrunch 的文章中，建议称“是时候完全离开 RSS 并转向 Twitter 了”因为“RSS 再也不能办成事了”。[^31] 他指出 Twitter 基本上是一个更好的 RSS 资讯，因为它在文章自身之外，能展示给你人们正在想什么。它允许你关注人而非只是频道。Gillmor 告诉他的读者，是时候让 RSS 撤回幕后了。他以鲍勃迪伦的“Forever Young”中的一节结束了文章。
+《纽约时报》发表 Swartz 讣告是在 2013 年 1 月。但实际上，RSS 在那时已经盛极而衰，正一步步走向默默无闻。2013 年 7 月，Google Reader 被关闭，官方给出的理由是用户数“连年下滑”。[^30] 此举引发了各大媒体纷纷发文，宣告 RSS 的死亡。但其实，早在 Google Reader 关闭前，唱衰 RSS 的声音就已持续多年。2009 年 5 月，Steve Gillmor 在 TechCrunch 上撰文建议：“是时候彻底告别 RSS，转向 Twitter 了”，因为“RSS 已经跟不上时代了”。[^31] 他指出，Twitter 本质上就是一个更强大的 RSS 源，因为它不仅能推送文章，还能让你看到大家对文章的看法。它让你关注的是“人”，而不仅仅是“频道”。Gillmor 告诉读者，是时候让 RSS 退居幕后了。他以 Bob Dylan《永远年轻》中的一句歌词结束了文章。
 
-现在，RSS 仍未死亡。但也不像过去那样那么流行了。很多人对 RSS 为何失去了其普及度做出了种种解释。最具说服力的解释可能是 Gillmor 在 2009 年给出的。社交网络，就像 RSS 一样，提供了一个能看到网络上所有最新信息的信息流。社交网络接替了 RSS 仅仅是因为它们是更好的信息流。它们也给所属公司带来了更多的利益。有些人曾指责谷歌，例如，关闭了 Google Reader 以使人们去用 Google+。Google 可能能在 Google+ 上以 Google Reader 无法提供的途径赚钱。Marco Arment，Instapaper 的创始人，于 2013 年在其博客中写道：
+今天，RSS 并未消亡。但它也远没有了往日的辉煌。关于 RSS 为何失宠，众说纷纭。其中最有说服力的解释，或许正是 Gillmor 在 2009 年提出的那个。社交网络，和 RSS 一样，为用户提供了一个聚合互联网最新资讯的信息流。社交网络之所以能取而代之，仅仅因为它们是“更好”的信息流。同时，它们也为背后的公司带来了更多利益。例如，有人指责 Google 关闭 Reader 是为了将用户赶向自家的 Google+。Google 也许能从 Google+ 上找到变现模式，但这种模式在 Google Reader 上是绝无可能的。Instapaper 的创始人 Marco Arment 在 2013 年的博客中写道：
 
-> Google Reader 仅仅是 Facebook 发起的战争中最新的伤亡，看起来非常偶然：决定谁来拥有一切的战争。当谷歌事实上“拥有” Google Reader 且能利用其中产生的巨量的新闻与关注度数据，这与他们更重要的 Google+ 策略相冲突：他们需要每个人都通过 Google+ 来阅读与分享一切信息这样他们才能够在广告定位数据，广告收入，增长及关联性上与 Facebook 竞争。[^32]
+> Google Reader 不过是 Facebook 无意间挑起的那场战争的最新牺牲品：一场旨在‘拥有一切’的战争。虽然 Google 在技术上确实‘拥有’Reader，也能利用流经其中的海量新闻和用户关注度数据，但这与其更重要的 Google+ 战略发生了冲突。他们需要每个人都通过 Google+ 来阅读和分享一切，这样才能在广告定位数据、广告收入、用户增长和市场影响力上与 Facebook 抗衡。[^32]
 
-如此用户与科技公司两者都意识到比起使用 RSS，他们能在使用社交网络时获得更多。
+所以，无论是用户还是科技公司，都发现从社交网络中获得的价值远超 RSS。
 
-另一个理论则是 RSS 对于普通用户来说一直都太极客了。就连曾急于接受 RSS 并向其读者推广的纽约时报，也在 2006 年抱怨道 RSS 是“电脑极客们”所创造的“对用户极为不友好”的首字母缩略词。[^33] 在 2004 年 RSS 的图标被设计出来之前，像纽约时报一样的网站将他们的 RSS 信息链接到一个标有“XML”的橘色小方块上，显然这只是令人生畏。[^34] 尽管这个标记非常准确，因为点击这个链接会将不幸的用户带到一整页的 XML 代码。[这条非常好的推特](https://twitter.com/mgsiegler/status/311992206716203008) 捕获了 RSS 为何消亡的本质。普通人从未对使用 RSS 感到舒适；它从未真正被设计为一个面向消费者的技术且包含了太多的障碍；人们在更好的选择到来时便跳槽走了。
+另一种理论认为，RSS 对普通人来说，门槛一直太高，太过“极客化” (geeky)。即便是当年积极拥抱并向读者推广 RSS 的《纽约时报》，也在 2006 年抱怨说，RSS 是个由“电脑极客”发明的“不怎么用户友好”的缩写。[^33] 在 2004 年那个橙色的 RSS 图标诞生之前，《纽约时报》等网站用来链接其 RSS 源的，是一个标着“XML”的小方块，这足以吓退大部分普通用户。[^34] 不过这个标签倒是完全准确，因为在那个年代，点开链接，一个倒霉的用户看到的将是一整页天书般的 XML 代码。[这条精彩的推文](https://twitter.com/mgsiegler/status/311992206716203008) 精辟地概括了这种观点。普通人从未对使用 RSS 感到自在；它从设计之初就不是面向消费者的技术，使用起来障碍重重；一旦有更好的替代品出现，人们便会毫不犹豫地“跳船”。
 
-如果有着更长远的发展，RSS 可能能够克服种种局限性。可能 RSS 能以某种方法被扩展以使订阅了相同频道的朋友们能相互同步他们关于某篇文章的想法。但在 RSS 开发者社区被卡在试图达成一致的时候，反之，像 Facebook 一样的公司能够“快速行动”。RSS 大分叉仅仅说明了那样做有多么难。所以如果我们扪心自问 RSS 为什么再也不流行，一个非常好的解释是社交网络取代了它。如果我们扪心自问社交网络为何能够取代它，答案可能是试图使 RSS 成功的人们面临着远比如建立 Facebook 更难的问题。如 Dornfest 在某个时刻给聚合邮件列表写的，“现在它比起序列化更像是政治，远不简单。”[^35]
+如果能得到持续发展，RSS 或许本可以克服这些局限。也许 RSS 可以扩展出新功能，让订阅了同一频道的朋友们能互相分享对某篇文章的看法。也许浏览器能提供更好的原生支持。但是，当 Facebook 这样的公司能够“快速行动，打破常规” (move fast and break things) 时，RSS 的开发者社区却被困在寻求共识的泥潭里。当他们无法就统一标准达成一致时，本可用于改进 RSS 的精力，却被浪费在无休止的重复造轮子上。例如，Davis 告诉我，如果当初“整合”邮件列表的成员们能够妥协协作，Atom 本无诞生的必要，“所有那些整理完善的工作本可以投入到 RSS 中，使其变得更强大。” 所以，如果我们探究 RSS 为何不再流行，最直接的解释是社交网络取代了它。但如果我们再深究一层，问为什么社交网络能取代它，答案或许是：那些试图让 RSS 成功的人们，面临着一个比（比如说）打造一个 Facebook 要困难得多的问题。正如 Dornfest 曾一度在“整合”邮件列表里写道：“目前来看，真正复杂的远非技术实现，而是政治。”[^35]
 
-所以现在我们只剩下集中的大量信息。某种程度上，我们 **确实** 有了 Kevin Werbach 在 1999 年预见的聚合互联网。毕竟，《洋葱》是一个依赖通过 Facebook 与推特的出版物，正如《宋飞正传》在其最初的运行后依赖于聚合赚取了数十亿的利润。但是网络上的聚合只出现在极少数频道中，意味着我们中没人能“控制我们的网络形象”，如同 Werbach 描述的那样。发生这种情况的一个原因是企业普遍的贪婪——RSS 作为一个开放格式，不能使科技公司控制数据及他们所需要的广告观看者，所以他们不支持它。但更为普通的原因是集中存储比起共同标准更易设计。共识非常难以达到，这也需要时间，但没有共识被拒绝的开发者将会离开并创造相竞争的标准。这给我们的教训可能是如果我们想要看见一个更好、更开放的网络，我们必须在不强迫对方之上做的更好。
+于是，今天我们面对的是一个个信息被中心化平台分割的孤岛。即便如此，Werbach 在 1999 年预见的那种“整合网络”其实已经实现了，只是方式与他设想的大相径庭。毕竟，像 _The Onion_ 这样的媒体，不正是依赖于通过 Facebook 和 Twitter 进行内容分发，就像经典美剧《宋飞正传》在首播结束后依靠电视联播大赚数亿美元一样吗？我问 Werbach 对此有何看法，他基本表示同意。他告诉我，从一个层面看，RSS 显然是失败了，因为它如今“并非博客圈、内容界或信息聚合领域的核心技术”。但从另一个层面看，“整个社交媒体革命，其核心之一就是聚合不同内容与资源的能力”，这与 RSS 的理念以及他最初对整合网络的构想遥相呼应。对 Werbach 而言，“这是 RSS 的遗产，即便它并非构建于 RSS 之上。”
 
-[^1]: Kevin Werbach, “[The Web Goes into Syndication](http://cdn.oreillystatic.com/radar/r1/07-99.pdf),” Release 1.0, July 22, 1999, 1, accessed September 14, 2018.
+不幸的是，当今 Web 上的内容整合，依旧只能通过那几家巨头渠道进行，这意味着我们没有人能像 Werbach 想象的那样，“保留对我们在线角色的控制”。造成这一局面的原因之一，是司空见惯的商业贪婪——RSS 作为一个开放格式，无法给予科技公司售卖广告所需的数据和流量控制权，因此得不到它们的支持。但更平淡无奇的原因是，构建中心化的信息孤岛，远比设计一个通用的公共标准要容易。达成共识困难重重且耗时漫长，而一旦没有共识，被冷落的开发者便会出走，创造相互竞争的标准。这或许给我们的教训是：如果我们想要一个更好、更开放的 Web，我们必须学会如何更好地与彼此协作，而不是互相拆台。
 
-[^2]: ibid.（同上）
+
+[^1]: Kevin Werbach, “The Web Goes into Syndication,” Release 1.0, July 22, 1999, 1, accessed September 14, 2018, <http://cdn.oreillystatic.com/radar/r1/07-99.pdf>.
+
+[^2]: ibid（同上）.
 
 [^3]: Werbach, 8.
 
-[^4]: Peter Wiggin, “[RSS Delivers the XML Promise](https://people.apache.org/~jim/NewArchitect/webrevu/1999/10_29/webauthors/10_29_99_2a.html),” Web Review, October 29, 1999, accessed September 14, 2018.
+[^4]: Peter Wiggin, “RSS Delivers the XML Promise,” Web Review, October 29, 1999, accessed September 14, 2018, <https://people.apache.org/~jim/NewArchitect/webrevu/1999/10_29/webauthors/10_29_99_2a.html>.
 
-[^5]: Ben Hammersley, [RSS and Atom (O’Reilly)](https://books.google.com/books?id=kwJVAgAAQBAJ), 8, accessed September 14, 2018.
+[^5]: Ben Hammersley, RSS and Atom (O’Reilly), 8, accessed September 14, 2018, <https://books.google.com/books?id=kwJVAgAAQBAJ>.
 
-[^6]: “[RSS 0.90 Specification](http://www.rssboard.org/rss-0-9-0),” RSS Advisory Board, accessed September 14, 2018.
+[^6]: “RSS 0.90 Specification,” RSS Advisory Board, accessed September 14, 2018, <http://www.rssboard.org/rss-0-9-0>.
 
-[^7]: “[My Netscape Network Future Directions](http://www.rssboard.org/mnn-futures),” RSS Advisory Board, accessed September 14, 2018.
+[^7]: “My Netscape Network Future Directions,” RSS Advisory Board, accessed September 14, 2018, <http://www.rssboard.org/mnn-futures>.
 
-[^8]: Tim Bray, “[The RDF.net Challenge](https://www.tbray.org/ongoing/When/200x/2003/05/21/RDFNet),” Ongoing by Tim Bray, May 21, 2003, accessed September 14, 2018.
+[^8]: Tim Bray, “The RDF.net Challenge,” Ongoing by Tim Bray, May 21, 2003, accessed September 14, 2018, <https://www.tbray.org/ongoing/When/200x/2003/05/21/RDFNet>.
 
-[^9]: Dan Libby, “[RSS: Introducing Myself](https://groups.yahoo.com/neo/groups/rss-dev/conversations/topics/239),” August 24, 2000, RSS-DEV Mailing List, accessed September 14, 2018.
+[^9]: Dan Libby, “RSS: Introducing Myself,” August 24, 2000, RSS-DEV Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/rss-dev/conversations/topics/239>.
 
-[^10]: Alexandra Krasne, “[Browser Wars May Become Portal Wars](http://www.cnn.com/TECH/computing/9910/04/portal.war.idg/index.html),” CNN, accessed September 14, 2018.
+[^10]: Alexandra Krasne, “Browser Wars May Become Portal Wars,” CNN, accessed September 14, 2018, <http://www.cnn.com/TECH/computing/9910/04/portal.war.idg/index.html>.
 
-[^11]: Dave Winer, “[Scripting News in XML](http://scripting.com/davenet/1997/12/15/scriptingNewsInXML.html),” Scripting News, December 15, 1997, accessed September 14, 2018.
+[^11]: Dave Winer, “Scripting News in XML,” Scripting News, December 15, 1997, accessed September 14, 2018, <http://scripting.com/davenet/1997/12/15/scriptingNewsInXML.html>.
 
-[^13]: Dave Winer, “[A Faceoff with Netscape](http://scripting.com/davenet/1999/06/16/aFaceOffWithNetscape.html),” Scripting News, June 16, 1999, accessed September 14, 2018.
+[^12]: Joseph Reagle, “RSS History,” 2004, accessed September 14, 2018, <https://reagle.org/joseph/2003/rss-history.html>.
+
+[^13]: Dave Winer, “A Faceoff with Netscape,” Scripting News, June 16, 1999, accessed September 14, 2018, <http://scripting.com/davenet/1999/06/16/aFaceOffWithNetscape.html>.
 
 [^14]: ibid.
 
-[^15]: Dan Libby, “[RSS 0.91 Specification (Netscape)](http://www.rssboard.org/rss-0-9-1-netscape),” RSS Advisory Board, accessed September 14, 2018.
+[^15]: Dan Libby, “RSS 0.91 Specification (Netscape),” RSS Advisory Board, accessed September 14, 2018, <http://www.rssboard.org/rss-0-9-1-netscape>.
 
-[^16]: Dave Winer, “[Scripting News: 7/28/1999](http://scripting.com/1999/07/28.html),” Scripting News, July 28, 1999, accessed September 14, 2018.
+[^16]: Dave Winer, “Scripting News: 7/28/1999,” Scripting News, July 28, 1999, accessed September 14, 2018, <http://scripting.com/1999/07/28.html>.
 
-[^17]: Oliver Willis, “[RSS Aggregators?](https://groups.yahoo.com/neo/groups/syndication/conversations/topics/173)” June 19, 2000, Syndication Mailing List, accessed September 14, 2018.
+[^17]: Oliver Willis, “RSS Aggregators?” June 19, 2000, Syndication Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/syndication/conversations/topics/173>.
 
-[^18]: Dave Winer, “[Scripting News: 07/07/2000](http://essaysfromexodus.scripting.com/backissues/2000/06/07/#rss),” Scripting News, July 07, 2000, accessed September 14, 2018.
+[^18]: Dave Winer, “Scripting News: 07/07/2000,” Scripting News, July 07, 2000, accessed September 14, 2018, <http://essaysfromexodus.scripting.com/backissues/2000/06/07/#rss>.
 
-[^19]: Dave Winer, “[Re: RSS 0.91 Restarted](https://groups.yahoo.com/neo/groups/syndication/conversations/topics/132),” June 9, 2000, Syndication Mailing List, accessed September 14, 2018.
+[^19]: Dave Winer, “Re: RSS 0.91 Restarted,” June 9, 2000, Syndication Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/syndication/conversations/topics/132>.
 
-[^20]: Leigh Dodds, “[RSS Modularization](http://www.xml.com/pub/a/2000/07/05/deviant/rss.html),” XML.com, July 5, 2000, accessed September 14, 2018.
+[^20]: Leigh Dodds, “RSS Modularization,” XML.com, July 5, 2000, accessed September 14, 2018, <http://www.xml.com/pub/a/2000/07/05/deviant/rss.html>.
 
-[^21]: Ian Davis, “[Re: {syndication} RSS Modularization Demonstration](https://groups.yahoo.com/neo/groups/syndication/conversations/topics/188),” June 28, 2000, Syndication Mailing List, accessed September 14, 2018.
+[^21]: Ian Davis, “Re: [syndication] RSS Modularization Demonstration,” June 28, 2000, Syndication Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/syndication/conversations/topics/188>.
 
-[^22]: “[RDF Site Summary (RSS) 1.0](http://web.resource.org/rss/1.0/spec),” December 09, 2000, accessed September 14, 2018.
+[^22]: “RDF Site Summary (RSS) 1.0,” December 09, 2000, accessed September 14, 2018, <http://web.resource.org/rss/1.0/spec>.
 
-[^23]: Dave Winer, “[Re: {syndication} Re: Thoughts, Questions, and Issues](https://groups.yahoo.com/neo/groups/syndication/conversations/topics/410),” August 16, 2000, Syndication Mailing List, accessed September 14, 2018.
+[^23]: Dave Winer, “Re: [syndication] Re: Thoughts, Questions, and Issues,” August 16, 2000, Syndication Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/syndication/conversations/topics/410>.
 
-[^24]: Mark Pilgrim, “[History of the RSS Fork](http://www.diveintomark.link/2002/history-of-the-rss-fork),” Dive into Mark, September 5, 2002, accessed September 14, 2018.
+[^24]: Mark Pilgrim, “History of the RSS Fork,” Dive into Mark, September 5, 2002, accessed September 14, 2018, <http://www.diveintomark.link/2002/history-of-the-rss-fork>.
 
-[^25]: Dan Brickley, “[RSS-Classic, RSS 1.0 and a Historical Debt](https://groups.yahoo.com/neo/groups/rss-dev/conversations/topics/1136),” November 7, 2000, Syndication Mailing List, accessed September 14, 2018.
+[^25]: Dan Brickley, “RSS-Classic, RSS 1.0 and a Historical Debt,” November 7, 2000, Syndication Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/rss-dev/conversations/topics/1136>.
 
-[^26]: Tim O’Reilly, “[Re: Asking Tim](http://static.userland.com/userLandDiscussArchive/msg021537.html),” UserLand, September 20, 2000, accessed September 14, 2018.
+[^26]: Tim O’Reilly, “Re: Asking Tim,” UserLand, September 20, 2000, accessed September 14, 2018, <http://static.userland.com/userLandDiscussArchive/msg021537.html>.
 
-[^27]: Dave Winer, “[Re: Asking Tim](http://static.userland.com/userLandDiscussArchive/msg021560.html),” UserLand, September 20, 2000, accessed September 14, 2018.
+[^27]: Dave Winer, “Re: Asking Tim,” UserLand, September 20, 2000, accessed September 14, 2018, <http://static.userland.com/userLandDiscussArchive/msg021560.html>.
 
-[^28]: John Quain, “[BASICS; Fine-Tuning Your Filter for Online Information](https://www.nytimes.com/2004/06/03/technology/basics-fine-tuning-your-filter-for-online-information.html),” The New York Times, 2004, accessed September 14, 2018.
+[^28]: John Quain, “BASICS; Fine-Tuning Your Filter for Online Information,” The New York Times, 2004, accessed September 14, 2018, <https://www.nytimes.com/2004/06/03/technology/basics-fine-tuning-your-filter-for-online-information.html>.
 
-[^29]: John Schwartz, “[Aaron Swartz, Internet Activist, Dies at 26](https://www.nytimes.com/2013/01/13/technology/aaron-swartz-internet-activist-dies-at-26.html),” The New York Times, January 12, 2013, accessed September 14, 2018.
+[^29]: John Schwartz, “Aaron Swartz, Internet Activist, Dies at 26,” The New York Times, January 12, 2013, accessed September 14, 2018, <https://www.nytimes.com/2013/01/13/technology/aaron-swartz-internet-activist-dies-at-26.html>.
 
-[^30]: “[A Second Spring of Cleaning](https://googleblog.blogspot.com/2013/03/a-second-spring-of-cleaning.html),” Official Google Blog, March 13, 2013, accessed September 14, 2018.
+[^30]: “A Second Spring of Cleaning,” Official Google Blog, March 13, 2013, accessed September 14, 2018, <https://googleblog.blogspot.com/2013/03/a-second-spring-of-cleaning.html>.
 
-[^31]: Steve Gillmor, “[Rest in Peace, RSS](https://techcrunch.com/2009/05/05/rest-in-peace-rss/),” TechCrunch, May 5, 2009, accessed September 14, 2018.
+[^31]: Steve Gillmor, “Rest in Peace, RSS,” TechCrunch, May 5, 2009, accessed September 14, 2018, <https://techcrunch.com/2009/05/05/rest-in-peace-rss/>.
 
-[^32]: Marco Arment, “[Lockdown](https://marco.org/2013/07/03/lockdown),” Marco.org, July 3, 2013, accessed September 14, 2018.
+[^32]: Marco Arment, “Lockdown,” Marco.org, July 3, 2013, accessed September 14, 2018, <https://marco.org/2013/07/03/lockdown>.
 
-[^33]: Bob Tedeschi, “[There’s a Popular New Code for Deals: RSS](https://www.nytimes.com/2006/01/29/travel/theres-a-popular-new-code-for-deals-rss.html),” The New York Times, January 29, 2006, accessed September 14, 2018.
+[^33]: Bob Tedeschi, “There’s a Popular New Code for Deals: RSS,” The New York Times, January 29, 2006, accessed September 14, 2018, <https://www.nytimes.com/2006/01/29/travel/theres-a-popular-new-code-for-deals-rss.html>.
 
-[^34]: “[NYTimes.com RSS Feeds](https://web.archive.org/web/20050326065348/www.nytimes.com/services/xml/rss/index.html),” The New York Times, accessed September 14, 2018.
+[^34]: “NYTimes.com RSS Feeds,” The New York Times, accessed September 14, 2018, <https://web.archive.org/web/20050326065348/www.nytimes.com/services/xml/rss/index.html>.
 
-[^35]: Rael Dornfest, “[RE: Re: {syndication} RE: RFC: Clearing Confusion for RSS, Agreement for Forward Motion](https://groups.yahoo.com/neo/groups/syndication/conversations/messages/1717),” May 31, 2001, Syndication Mailing List, accessed September 14, 2018.
+[^35]: Rael Dornfest, “RE: Re: [syndication] RE: RFC: Clearing Confusion for RSS, Agreement for Forward Motion,” May 31, 2001, Syndication Mailing List, accessed September 14, 2018, <https://groups.yahoo.com/neo/groups/syndication/conversations/messages/1717>.
