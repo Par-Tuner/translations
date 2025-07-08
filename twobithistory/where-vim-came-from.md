@@ -1,106 +1,115 @@
-# Vim 的起源
+# Vim 从何而来
 
-原文：[Where Vim Came From](https://twobithistory.org/2018/08/05/where-vim-came-from.html)
+2018 年 8 月 5 日
 
+我最近偶然发现了一种名为 Intel HEX 的文件格式。据我所知，Intel HEX 文件（使用 `.hex` 扩展名）旨在通过将二进制图像编码为十六进制数字行，使其内容更易读。显然，它们被那些编程微控制器或需要将数据烧录到只读存储器 (ROM) 中的人使用。无论如何，当我第一次在 Vim 中打开一个 HEX 文件时，我发现了一些令人震惊的事情。这种文件格式，至少对我来说，是极其深奥的，但 Vim 竟然对它了如指掌。HEX 文件的每一行都是一个记录，分为不同的字段——Vim 竟然自动给每个字段都涂上了不同的颜色。我敬畏地问道：`set ft?`。Vim 胜利地回答：`filetype=hex`。
 
-最近，我偶然接触到一种名为 Intel HEX 的文件格式。据我了解，Intel HEX 文件 (扩展名为 `.hex`) 的作用，是通过将二进制图像编码成一行行十六进制数字，让原本难以捉摸的二进制内容变得更直观一些。一般是给微控制器 (microcontrollers) 编程或需要将数据烧录进只读存储器 (ROM) 的人会用到它。总之，当我第一次在 Vim 里打开一个 HEX 文件时，我被彻底震惊了。这个文件格式，至少在我看来，是如此深奥，但 Vim 却早已对它了如指掌。HEX 文件的每一行都是一条记录，被划分为不同字段——而 Vim 早就贴心地用不同颜色标亮了每个字段。我敬畏地输入 `:set ft?` 并按下回车。“`filetype=hex`”，Vim 自豪地回应。
+Vim 无处不在。它被如此多的人使用，以至于支持 Intel HEX 文件这样的功能不应该令人惊讶。Vim 预装在 Mac OS 上，并在 Linux 世界拥有大量拥趸。即使是那些讨厌它的人也对它很熟悉，因为许多流行的命令行工具默认会将用户带入 Vim，以至于新手被困在 Vim 中已经成为一个 [梗](https://stackoverflow.blog/wp-content/uploads/2017/05/meme.jpeg)。一些主要网站，包括 Facebook，当你按下 `j` 键时会向下滚动，按下 `k` 键时会向上滚动——这成了 Vim 在数字文化中广泛传播的一个奇特标志。
 
-Vim 的身影无处不在。它的用户群体如此庞大，以至于支持 HEX 这种小众格式其实不足为奇。macOS 系统预装了 Vim，它在 Linux 世界里也拥有一大批忠实拥趸。就连那些讨厌它的人也对它不陌生，因为有太多流行的命令行工具会默认使用 Vim 打开文件，结果导致无数新手被困在 Vim 里出不来，这甚至成了一个经久不衰的 [梗](https://stackoverflow.blog/wp-content/uploads/2017/05/meme.jpeg)。甚至在包括 Facebook 在内的一些大型网站上，你按下 `j` 键页面就会向下滚动，按下 `k` 键就会向上滚动——这堪称 Vim 渗透数字文化的巅峰标志。
+然而，Vim 也是一个谜。例如，与人尽皆知由 Facebook 开发和维护的 React 不同，Vim 没有明显的赞助商。尽管它无处不在且举足轻重，但似乎没有任何委员会或组织来决定 Vim 的发展方向。你可以在 [Vim 网站](https://www.vim.org/) 上花几分钟时间，但仍然无法更好地了解是谁创建了 Vim 或其背后的原因。如果你在不指定文件参数的情况下启动 Vim，你会看到 Vim 的启动信息，上面写着 Vim 是由“Bram Moolenaar 等人”开发的。但这并没有告诉你太多。Bram Moolenaar 究竟是谁，他的那些神秘同伙又是谁呢？
 
-然而，Vim 也是一个谜。就拿 React 来说，人人都知道它由 Facebook 开发和维护，但 Vim 却似乎没有任何官方赞助商。尽管它如此普及和重要，却好像没有任何委员会或组织在为它做决策。你可以在 [Vim 官网](https://www.vim.org/) 上逛好几分钟，但对谁创造了 Vim、又为何创造它这些问题，依然一头雾水。如果你启动 Vim 时没有指定文件名，会看到一条启动信息，说 Vim 是由 “Bram Moolenaar 等人” 开发的。但这信息量约等于零。Bram Moolenaar 是谁？他那些神秘的伙伴们又是何方神圣？
+也许更重要的是，当我们提出这些问题时，为什么退出 Vim 需要输入 `:wq`？当然，它是“写入”操作后跟“退出”操作的组合，但这并不是一个特别直观的约定。谁决定复制文本应该被称为“yanking”（拽取）？为什么 `:%s/foo/bar/gc` 是“查找和替换”的缩写？Vim 的这些独特之处似乎过于随意，不像是凭空捏造的，那么它们到底是从哪里来的呢？
 
-或许更重要的是，既然我们已经开始提问了，那为什么退出 Vim 非得用 `:wq` 这么个指令？诚然，这是“写入 (write)” 操作后面跟着“退出 (quit)” 操作，但这实在算不上什么直观的设计。又是谁决定了复制文本不叫“复制”，而叫“yanking” (yank，意为猛地一拉)？为什么 `:%s/foo/bar/gc` 这么一长串就代表了“查找并替换”？Vim 的种种奇特之处显得如此随心所欲，不像是凭空杜撰的，那么它们到底从何而来？
+答案，正如通常情况一样，始于那个古老的计算熔炉——贝尔实验室 (Bell Labs)。从某种意义上说，Vim 只是一个软件的最新迭代——我们可以称之为“wq 文本编辑器”——它自 Unix 时代黎明以来一直在不断开发和改进。
 
-答案，一如既往地，要从那个古老的计算技术摇篮——贝尔实验室 (Bell Labs) 讲起。从某种意义上说，Vim 不过是一款软件的最新迭代版本。我们可以叫它“wq 文本编辑器”，自 Unix 纪元开启以来，它就一直处于持续的开发和改进之中。
+## 肯·汤普森 (Ken Thompson) 编写行编辑器
 
-## Ken Thompson 开发的行编辑器
+1966 年，贝尔实验室 (Bell Labs) 雇佣了肯·汤普森 (Ken Thompson)。汤普森刚在加州大学伯克利分校 (University of California, Berkeley) 完成电气工程和计算机科学硕士学位。在那里，他使用了一个名为 QED 的文本编辑器，该编辑器是为伯克利分时系统 (Berkeley Timesharing System) 在 1965 年至 1966 年间编写的。[<sup>1</sup>](#fn1) 汤普森抵达贝尔实验室后做的第一件事之一就是为麻省理工学院兼容分时系统 (MIT Compatible Time-Sharing System) 重写 QED。他后来又为 Multics 项目编写了另一个版本的 QED。在此过程中，他扩展了该程序，以便用户可以使用正则表达式 (regular expressions) 搜索文件中的行并进行替换。[<sup>2</sup>](#fn2)
 
-1966 年，贝尔实验室聘用了 Ken Thompson。Thompson 当时刚在加州大学伯克利分校获得电气工程与计算机科学硕士学位。在校期间，他曾使用过一款名为 QED 的文本编辑器，这款编辑器是 1965 到 1966 年间为伯克利分时系统编写的。[^1] Thompson 到贝尔实验室后做的第一件事，就是为 MIT 兼容分时系统重写了 QED。后来，他又为 Multics 项目写了另一个版本的 QED。在这一过程中，他扩展了程序功能，让用户可以使用 正则表达式 (regular expressions) 来搜索文件中的特定行并执行替换操作。[^2]
+Multics 项目，像伯克利分时系统 (Berkeley Timesharing System) 一样，旨在创建一个商业上可行的分时操作系统，是麻省理工学院 (MIT)、通用电气 (General Electric) 和贝尔实验室 (Bell Labs) 之间的合作项目。AT&T 最终认为该项目没有前途并退出了。汤普森和贝尔实验室的同事丹尼斯·里奇 (Dennis Ritchie)，现在无法访问分时系统，并且怀念这种系统提供的“交互式计算的感觉”，于是着手创建他们自己的版本，该版本最终被称为 Unix。[<sup>3</sup>](#fn3) 1969 年 8 月，当他的妻子和年幼的儿子在加利福尼亚度假时，汤普森组装了新系统的基本组件，为“操作系统、Shell、编辑器和汇编器各分配了一周时间。”[<sup>4</sup>](#fn4)
 
-Multics 项目的目标是创建一个商业上可行的分时操作系统 (就像伯克利分时系统一样)，它由 MIT、通用电气和贝尔实验室三方合作。最终，AT\&T 认为该项目前景渺茫而选择退出。就这样，Thompson 和同在贝尔实验室的同事 Dennis Ritchie 突然没法使用分时系统了，他们非常怀念那种系统带来的“交互式计算的感觉”，于是决定自己动手打造一个。这个系统，最终以 Unix 的名字为世人所知。[^3] 1969 年 8 月，趁着妻子和年幼的儿子去加州度假，Thompson 拼凑出了这个新系统的基本雏形，他计划“给操作系统、shell、编辑器和汇编器各一周的开发时间”。[^4]
+该编辑器将被命名为 `ed`。它基于 QED，但并非完全重新实现。汤普森决定放弃 QED 的某些功能。正则表达式支持被削减，以便只理解相对简单的正则表达式。QED 允许用户通过打开多个缓冲区同时编辑多个文件，但 `ed` 一次只能处理一个缓冲区。而且，QED 可以执行包含命令的缓冲区，但 `ed` 不会这样做。这些简化可能是必要的。丹尼斯·里奇 (Dennis Ritchie) 曾表示，没有 QED 的高级正则表达式“损失不大”。[<sup>5</sup>](#fn5)
 
-这款编辑器被命名为 `ed`。它基于 QED，但并非简单的复刻。Thompson 决定砍掉 QED 的一些特性。正则表达式 的支持被削弱了，`ed` 只能理解比较简单的正则。QED 允许用户打开多个 缓冲区 (buffer) 来同时编辑多个文件，但 `ed` 一次只能处理一个缓冲区。此外，QED 可以执行一个包含命令的缓冲区，`ed` 则完全不支持这个功能。这些简化在当时或许是必要的。Dennis Ritchie 就曾说过，缺少 QED 的高级正则表达式“算不上什么大损失”。[^5]
+`ed` 现在是 POSIX 规范的一部分，所以如果你有一个符合 POSIX 规范的系统，你的电脑上就会安装它。它值得一试，因为许多 `ed` 命令今天仍然是 Vim 的一部分。例如，为了将缓冲区写入磁盘，你必须使用 `w` 命令。为了退出编辑器，你必须使用 `q` 命令。这两个命令可以同时在同一行上指定——因此，就有了 `wq`。像 Vim 一样，`ed` 是一个模式编辑器 (modal editor)；要从命令模式进入输入模式，你可以使用插入命令 (`i`)、追加命令 (`a`) 或更改命令 (`c`)，具体取决于你如何尝试转换文本。`ed` 还引入了 `s/foo/bar/g` 语法用于查找和替换，或“替换”文本。
 
-`ed` 现在已经是 POSIX 规范的一部分，所以只要你的系统遵循 POSIX 标准，你的电脑里就有它。`ed` 很值得把玩一番，因为它的许多命令如今已是 Vim 的一部分。例如，要把缓冲区内容写入磁盘，你得用 `w` 命令；要退出编辑器，就得用 `q` 命令。这两个命令可以写在同一行一次性执行——`wq` 就这么来了。和 Vim 一样，`ed` 也是一个 模态编辑器 (modal editor)；要从命令模式进入输入模式，你需要根据操作目的使用插入命令 (`i`)、追加命令 (`a`) 或修改命令 (`c`)。`ed` 还开创性地使用 `s/foo/bar/g` 这种语法来查找和替换文本。
+鉴于所有这些相似之处，你可能会期望普通的 Vim 用户在使用 `ed` 时不会遇到麻烦。但 `ed` 在另一个重要方面与 Vim 完全不同。`ed` 是一个真正的行编辑器。它是在电传打字机 (teletype printer) 时代编写并广泛使用的。当肯·汤普森 (Ken Thompson) 和丹尼斯·里奇 (Dennis Ritchie) 在 Unix 上辛勤工作时，他们看起来是这样的：
 
-看到这么多相似之处，你可能会觉得 Vim 用户上手 `ed` 应该毫无压力。但在另一个关键方面，`ed` 和 Vim 天差地别。`ed` 是一个纯粹的 行编辑器 (line editor)。它诞生并风靡于电传打字机 (teletype printer) 的年代。当 Ken Thompson 和 Dennis Ritchie 奋力编写 Unix 时，他们的工作场景是这样的：
+![肯·汤普森 (Ken Thompson) 通过电传打字机与 PDP-11 交互。](https://upload.wikimedia.org/wikipedia/commons/8/8f/Ken_Thompson_%28sitting%29_and_Dennis_Ritchie_at_PDP-11_%282876612463%29.jpg)
 
-![Ken Thompson (坐) 和 Dennis Ritchie (站) 通过电传打字机与 PDP-11 交互。](https://s2.loli.net/2024/04/13/Yzk6CW9PntxZilM.jpg)
+`ed` 不允许你在打开的缓冲区中原地编辑行，或移动光标，因为每次你对其进行更改时，`ed` 都必须重新打印整个文件。1969 年，`ed` 没有“清除”屏幕内容的机制，因为屏幕只是一张纸，所有已经输出的内容都已用墨水输出。必要时，你可以使用列表命令 (`l`) 要求 `ed` 为你打印出一定范围的行，但大多数时候你都在操作你看不到的文本。因此，使用 `ed` 有点像在一个漆黑的房子里用一个电量不足的手电筒摸索。你一次只能看到这么多，所以你必须尽力记住所有东西在哪里。
 
-`ed` 不允许你在文件的多行文本中自由移动光标并就地编辑，因为每当你修改一处，`ed` 就必须把整个文件重新打印一遍。在 1969 年，`ed` 没有任何机制能“清空”屏幕，因为所谓的“屏幕”就是一张纸，打上去的内容都是白纸黑字，覆水难收。需要时，你可以用列表命令 (`l`) 让 `ed` 打印出某几行给你看，但大多数时候，你编辑的文本是你根本看不见的。因此，用 `ed` 的感觉，就好比拿着一盏快没电的手电筒，在一间漆黑的屋子里摸索。你一次只能照亮一小块地方，所以必须竭尽全力记住屋里的一切布局。
-
-下面是一个 `ed` 会话的示例。我在每行后面用 `#` 加了注释来解释其用途 (如果在真实的 `ed` 里输入这些注释，它会报错)：
+以下是一个 `ed` 会话的示例。我添加了注释（在 `#` 字符之后）解释每行的目的，尽管如果这些注释实际输入，`ed` 不会将其识别为注释并会报错：
 
 ```
 [sinclairtarget 09:49 ~]$ ed
-i                               # 进入输入模式
+i                           # 进入输入模式
 Hello world!
 
 Isn't it a nice day?
-.                               # 结束输入
-1,2l                            # 列出第 1 到 2 行
+.                           # 结束输入
+1,2l                        # 列出第 1 到第 2 行
 Hello world!$
 $
-2d                              # 删除第 2 行
-,l                              # 列出整个缓冲区
+2d                          # 删除第 2 行
+,l                          # 列出整个缓冲区
 Hello world!$
 Isn't it a nice day?$
-s/nice/terrible/g               # 全局替换
+s/nice/terrible/g           # 全局替换
 ,l
 Hello world!$
 Isn't it a terrible day?$
-w foo.txt                       # 写入 foo.txt
-38                              # (写入的字节数)
-q                               # 退出
+w foo.txt                   # 写入 foo.txt
+38                          # (写入的字节数)
+q                           # 退出
 [sinclairtarget 10:50 ~]$ cat foo.txt
 Hello world!
 Isn't it a terrible day?
+
 ```
 
-如你所见，`ed` 是个相当“沉默寡言”的程序。
+如你所见，`ed` 不是一个特别“健谈”的程序。
 
-## Bill Joy 开发的文本编辑器
+## 比尔·乔伊 (Bill Joy) 编写文本编辑器
 
-`ed` 对于 Thompson 和 Ritchie 来说够用了。但其他人觉得它难用得要命，并给它贴上了“Unix 对新手极度不友好”的典型反面教材的标签。[^6] 1975 年，一个叫 George Coulouris 的人在伦敦玛丽女王学院的 Unix 系统上，开发了 `ed` 的一个改进版。Coulouris 编写这个编辑器时，充分利用了他在学院能接触到的视频显示器。和 `ed` 不同，Coulouris 的程序允许用户在屏幕上直接编辑一整行，并通过键盘逐字移动光标 (想象一下，只能在单行里使用 Vim)。Coulouris 将他的程序命名为 `em`，即“editor for mortals (凡人编辑器)”。据说这个名字的灵感来源于一次 Ken Thompson 的到访：Thompson 看了 Coulouris 的程序后不屑一顾，说自己编辑文件时根本不需要看到文件的实时状态。[^7]
+`ed` 对汤普森 (Thompson) 和里奇 (Ritchie) 来说足够好用。但其他人发现它难以使用，并因此获得了 Unix 对新手特别不友好的恶名。[<sup>6</sup>](#fn6) 1975 年，一位名叫乔治·库鲁里斯 (George Coulouris) 的人在伦敦玛丽女王学院 (Queen Mary’s College) 安装的 Unix 系统上开发了一个改进版的 `ed`。库鲁里斯编写他的编辑器是为了利用他在玛丽女王学院可用的视频显示器。与 `ed` 不同，库鲁里斯的程序允许用户在屏幕上原地编辑单行，逐个按键地在行中导航（想象一下一次只在 Vim 中编辑一行）。库鲁里斯将他的程序命名为 `em`，或“凡人编辑器 (editor for mortals)”，据说这是在汤普森 (Thompson) 访问玛丽女王学院，看到库鲁里斯构建的程序后，不屑一顾地说他编辑文件时不需要看到文件状态，从而启发了他。[<sup>7</sup>](#fn7)
 
-1976 年，Coulouris 带着 `em` 来到加州大学伯克利分校，作为计算机科学系的访问学者在这里度过了一个夏天。这恰好是 Ken Thompson 离开伯克利前往贝尔实验室的十年之后。在伯克利，Coulouris 遇到了 Bill Joy，一位正在为 伯克利软件发行版 (Berkeley Software Distribution, BSD) 忙碌的研究生。Coulouris 向 Joy 展示了 `em`，Joy 则在 `em` 的源码基础上，开发出了一个更强大的 `ed` 改进版，取名为 `ex`，意为“extended `ed` (扩展版 `ed`)”。1978 年，`ex` 的 1.1 版本随第一版 BSD Unix 一同发布。`ex` 在很大程度上与 `ed` 兼容，但新增了两种模式：一种是“开放模式”，可以像 `em` 一样进行单行编辑；另一种是“可视模式”，这种模式会占据整个屏幕，实现我们今天所习惯的对整个文件进行实时编辑。
+1976 年，库鲁里斯 (Coulouris) 将 `em` 带到加州大学伯克利分校 (UC Berkeley)，在那里他作为计算机科学系 (CS department) 的访问学者度过了夏天。这正好是肯·汤普森 (Ken Thompson) 离开伯克利去贝尔实验室 (Bell Labs) 工作十年后。在伯克利，库鲁里斯遇到了比尔·乔伊 (Bill Joy)，他是一名研究生，正在开发伯克利软件发行版 (Berkeley Software Distribution, BSD)。库鲁里斯向乔伊展示了 `em`，乔伊以库鲁里斯的源代码为起点，构建了一个改进版的 `ed`，名为 `ex`，意为“扩展的 `ed`”。`ex` 的 1.1 版本随 1978 年 BSD Unix 的首次发布一起捆绑。`ex` 大致与 `ed` 兼容，但它增加了两种模式：一种是“开放”模式 (open mode)，它实现了像 `em` 那样的单行编辑；另一种是“可视化”模式 (visual mode)，它占据了整个屏幕，并实现了我们今天习惯的整个文件的实时编辑。
 
-在 1979 年的第二版 BSD 中，一个名为 `vi` 的可执行文件诞生了，它的功能很简单：直接在可视模式下启动 `ex`。[^8]
+1979 年 BSD 的第二个版本发布时，引入了一个名为 `vi` 的可执行文件，它所做的不过是在可视化模式下打开 `ex`。[<sup>8</sup>](#fn8)
 
-`ex`/`vi` (下文统称 `vi`) 奠定了我们今天所熟知的、除继承自 `ed` 之外的几乎所有 Vim 的传统。当年 Joy 使用的视频终端是 Lear Siegler ADM-3A，这款终端的键盘上没有方向键。作为替代，`h`、`j`、`k`、`l` 这几个键上印着箭头，这便是 Joy 用这几个键在 `vi` 中移动光标的原因。此外，ADM-3A 键盘上的 `Esc` 键，正好在我们今天键盘上 `Tab` 键的位置，这就解释了为什么“退出模式”这么一个高频操作，会分配给一个如今看来如此“偏僻”的按键。命令前面的冒号 `:` 也源自 `vi`，它在普通模式 (也就是运行 `ex` 后进入的模式) 下，会用 `:` 作为提示符。这解决了 `ed` 长期以来为人诟病的一点——启动后一片死寂，毫无提示。在可视模式下，保存并退出需要输入经典的 `:wq`。“yanking (复制)” 和 “putting (粘贴)”，以及标记功能和用于设置选项的 `set` 命令，都源于最初的 `vi`。可以说，我们今天在 Vim 中进行基本文本编辑所用的功能，绝大部分都来自 `vi`。
+`ex`/`vi`（此后简称 `vi`）确立了我们现在与 Vim 相关的大部分约定，这些约定并非 `ed` 已有的。乔伊 (Joy) 使用的视频终端是 Lear Siegler ADM-3A，它的键盘没有光标键。相反，箭头被画在 `h`、`j`、`k` 和 `l` 键上，这就是乔伊在 `vi` 中使用这些键进行光标移动的原因。ADM-3A 键盘上的 Esc 键也位于我们今天会找到 Tab 键的位置，这解释了为什么这样一个难以触及的键会被分配给像退出模式这样常见的操作。命令前缀的 `:` 字符也来自 `vi`，它在常规模式（即运行 `ex` 进入的模式）下使用 `:` 作为提示符。这解决了 `ed` 的一个长期抱怨，即 `ed` 一旦启动，就会以完全的沉默迎接用户。在可视化模式下，保存和退出现在需要输入经典的 `:wq`。“Yanking”（拽取）和“putting”（放置）、标记 (marks) 以及用于设置选项的 `set` 命令都是原始 `vi` 的一部分。我们今天在 Vim 中进行基本文本编辑时使用的功能，大部分都是 `vi` 的功能。
 
-![一台 Lear Siegler ADM-3A 终端的键盘。](https://s2.loli.net/2024/04/13/GnTOFa4NMpXo7di.jpg)
+![Lear Siegler ADM-3A 键盘。](https://vintagecomputer.ca/wp-content/uploads/2015/01/LSI-ADM3A-full-keyboard.jpg)
 
-在 BSD Unix 中，除了 `ed`，`vi` 是唯一捆绑的文本编辑器。在那个年代，Emacs 可能要花费数百美元 (当时 GNU Emacs 还未问世)，因此 `vi` 迅速流行起来。但 `vi` 是 `ed` 的直系后代，这意味着没有 AT\&T 的源码授权，谁也不能修改它的代码。这激励了许多人去创造 `vi` 的 开源 (open-source) 版本。STEVIE (ST Editor for VI Enthusiasts) 诞生于 1987 年，Elvis 诞生于 1990 年，`nvi` 则在 1994 年问世。这些克隆版中的一些还增加了额外功能，比如 语法高亮 (syntax highlighting) 和分屏。特别是 Elvis，它的许多特性后来都被整合进了 Vim，这很大程度上要归功于 Elvis 用户们的积极推动。[^9]
+`vi` 是 BSD Unix 捆绑的唯一文本编辑器，除了 `ed`。当时，Emacs 可能要花费数百美元（这在 GNU Emacs 出现之前），所以 `vi` 变得非常流行。但 `vi` 是 `ed` 的直系后代，这意味着如果没有 AT&T 的源代码许可证，就无法修改源代码。这促使一些人创建了 `vi` 的开源版本。STEVIE (ST Editor for VI Enthusiasts) 于 1987 年出现，Elvis 于 1990 年出现，而 `nvi` 则于 1994 年出现。其中一些克隆版本增加了额外的功能，如语法高亮 (syntax highlighting) 和分屏 (split windows)。特别是 Elvis，它的许多功能被整合到 Vim 中，因为许多 Elvis 用户都强烈要求将其包含在内。[<sup>9</sup>](#fn9)
 
-## Bram Moolenaar 创造 Vim
+## 布拉姆·穆勒纳尔 (Bram Moolenaar) 编写 Vim
 
-“Vim”，如今是“Vi Improved (Vi 改进版)”的缩写，但它最初的名字是“Vi Imitation (Vi 模仿版)”。和其它 `vi` 的克隆版一样，Vim 的诞生也是源于在一个无法使用 `vi` 的平台上复刻它的想法。Bram Moolenaar 是一位荷兰软件工程师，在荷兰芬洛的一家复印机公司工作。他想为自己全新的 Amiga 2000 电脑找一款像 `vi` 一样的工具。Moolenaar 在大学时早已习惯了在 Unix 系统上使用 `vi`，那套操作已经融入了他的指尖，形成了肌肉记忆。[^10] 于是，在 1988 年，Moolenaar 以当时已有的 `vi` 克隆版 STEVIE 为起点，开始打造 Vim。
+“Vim”，现在是“Vi Improved”（Vi 改进版）的缩写，最初代表“Vi Imitation”（Vi 模仿版）。像许多其他 `vi` 克隆一样，Vim 最初是为了在一个没有 `vi` 的平台上复制 `vi` 而尝试的。布拉姆·穆勒纳尔 (Bram Moolenaar)，一位在荷兰芬洛 (Venlo) 一家复印机公司工作的荷兰软件工程师，希望为他全新的 Amiga 2000 拥有一个类似 `vi` 的东西。穆勒纳尔已经习惯了在他大学的 Unix 系统上使用 `vi`，现在它已经“在他指尖”。[<sup>10</sup>](#fn10) 所以在 1988 年，穆勒纳尔以现有的 STEVIE `vi` 克隆为起点，开始开发 Vim。
 
-Moolenaar 之所以能用上 STEVIE，是因为 STEVIE 曾被收录在一套叫“Fred Fish 磁盘”的东西里。Fred Fish 是一名美国程序员，他每个月都会向外邮寄一张软盘，里面精选了 Amiga 平台下最优秀的开源软件。任何人只要支付邮费，就能索取一张。STEVIE 的好几个版本都通过 Fred Fish 磁盘发行，Moolenaar 用的是第 256 号磁盘上的版本。[^11] (有点令人失望的是，Fred Fish 磁盘和那个卡通游戏角色 [Freddi Fish (小鲤鱼弗雷迪)](https://en.wikipedia.org/wiki/Freddi_Fish) 似乎没什么关系。)
+穆勒纳尔 (Moolenaar) 能够接触到 STEVIE，因为 STEVIE 之前曾出现在一种名为 Fred Fish 磁盘的东西上。弗雷德·菲什 (Fred Fish) 是一位美国程序员，他每月都会邮寄一张软盘，其中精选了 Amiga 平台上最好的开源软件。任何人都可以免费索取磁盘，只需支付邮费。STEVIE 的几个版本都在 Fred Fish 磁盘上发布。穆勒纳尔使用的版本是在 Fred Fish 磁盘 256 上发布的。[<sup>11</sup>](#fn11)（令人失望的是，Fred Fish 磁盘似乎与 [Freddi Fish](https://en.wikipedia.org/wiki/Freddi_Fish) 没有任何关系。）
 
-Moolenaar 很喜欢 STEVIE，但很快就发现它缺少了许多 `vi` 的命令。[^12] 因此，在 Vim 的第一个版本里，Moolenaar 将兼容 `vi` 作为首要目标。当时，有人写了一套 `vi` 宏，只要编辑器能完美兼容 `vi`，运行这套宏就能解开一个 [随机生成的迷宫](https://github.com/isaacs/.vim/tree/master/macros/maze)。Moolenaar 最终成功让这套宏在 Vim 里跑了起来。1991 年，Vim 作为“Vi Imitation”首次在第 591 号 Fred Fish 磁盘上发布。[^13] Moolenaar 已经为它添加了一些新功能 (包括多级撤销和针对编译器错误的“快速修复”模式)，这意味着 Vim 此时已超越了 `vi`。但直到 1993 年通过 FTP 发布的 Vim 2.0，它才正式告别“Vi Imitation”这个名字。
+穆勒纳尔 (Moolenaar) 喜欢 STEVIE，但很快注意到缺少许多 `vi` 命令。[<sup>12</sup>](#fn12) 因此，在 Vim 的第一个版本中，穆勒纳尔将 `vi` 兼容性作为他的首要任务。其他人编写了一系列 `vi` 宏，当通过一个正确兼容 `vi` 的编辑器运行时，可以解决一个 [随机生成的迷宫](https://github.com/isaacs/.vim/tree/master/macros/maze)。穆勒纳尔成功地让这些宏在 Vim 中工作。1991 年，Vim 首次在 Fred Fish 磁盘 591 上发布，名为“Vi Imitation”。[<sup>13</sup>](#fn13) 穆勒纳尔添加了一些功能（包括多级撤销 (multi-level undo) 和用于编译器错误的“quickfix”模式），这意味着 Vim 已经超越了 `vi`。但 Vim 将一直保持“Vi Imitation”的名称，直到 1993 年通过 FTP 发布的 Vim 2.0。
 
-在互联网上各路协作者的偶尔帮助下，Moolenaar 稳步地为 Vim 添加新功能。Vim 2.0 引入了对 `wrap` (自动换行) 选项和长文本行水平滚动的支持。Vim 3.0 增加了分屏和缓冲区支持，这个功能的灵感来源于 `vi` 的另一个克隆版 `nvi`。Vim 还开始将每个缓冲区存入一个 交换文件 (swap file)，这样即使程序崩溃，编辑过的内容也能恢复。Vimscript 在 Vim 5.0 中首次亮相，一同出现的还有语法高亮功能。在这一切发生的同时，Vim 的声望与日俱增。它被移植到了 MS-DOS、Windows、Mac，甚至还“反攻”回了 Unix，与原版 `vi` 一较高下。
+穆勒纳尔 (Moolenaar) 在各种互联网合作者的偶尔帮助下，稳步地为 Vim 添加功能。Vim 2.0 引入了对 `wrap` 选项和长文本行水平滚动的支持。Vim 3.0 增加了对分屏和缓冲区的支持，这一功能灵感来自 `vi` 克隆 `nvi`。Vim 现在还将每个缓冲区保存到交换文件 (swap file) 中，以便编辑的文本可以在崩溃后幸存。Vimscript 首次出现在 Vim 5.0 中，同时支持语法高亮。与此同时，Vim 的受欢迎程度不断增长。它被移植到 MS-DOS、Windows、Mac，甚至 Unix，在那里它与原始的 `vi` 竞争。
 
-2006 年，Vim 被《Linux Journal》的读者票选为最受欢迎的编辑器。[^14] 时至今日，根据 Stack Overflow 2018 年的开发者调查，Vim 是最受欢迎的文本模式 (即在终端模拟器中运行) 编辑器，有 25.8% 的软件开发者 (以及 40% 的系统管理员/DevOps 工程师) 在使用它。[^15] 在上世纪 80 年代末到整个 90 年代，程序员之间曾爆发过一场“编辑器战争”，将 Emacs 用户和 `vi` (以及后来的 Vim) 用户划分为两大对立阵营。尽管 Emacs 至今无疑仍有拥趸，但一些人认为，这场战争已经结束，Vim 最终胜出。[^16] 2018 年 Stack Overflow 的调查数据似乎也印证了这一点：只有 4.1% 的受访者使用 Emacs。
+2006 年，Vim 被《Linux Journal》读者评选为最受欢迎的编辑器。[<sup>14</sup>](#fn14) 今天，根据 Stack Overflow 2018 年开发者调查，Vim 是最受欢迎的文本模式（即终端模拟器）编辑器，被 25.8% 的所有软件开发者（以及 40% 的系统管理员/DevOps 人员）使用。[<sup>15</sup>](#fn15) 在一段时间内，在 1980 年代后期和整个 1990 年代，程序员们发动了“编辑器大战 (Editor Wars)”，Emacs 用户与 `vi`（最终是 Vim）用户相互对抗。虽然 Emacs 当然仍然有追随者，但有些人认为编辑器大战已经结束，Vim 赢了。[<sup>16</sup>](#fn16) 2018 年 Stack Overflow 开发者调查表明这是真的；只有 4.1% 的受访者使用 Emacs。
 
-Vim 为何能如此成功？显然，人们喜爱 Vim 提供的各种功能。但我认为，Vim 悠久的历史说明，它的优势远不止功能集那么简单。Vim 的代码库最早只能追溯到 1988 年，也就是 Moolenaar 开始开发它的那年。但“wq 文本编辑器”——这个关于类 Unix 文本编辑器应如何设计的宏大构想——却已存在了半个世纪之久。“wq 文本编辑器”有过几种不同的具体实现，但很大程度上得益于 Bill Joy 和 Bram Moolenaar 对向后兼容性的异乎寻常的重视，各种绝妙的创意得以随着时间推移不断累积。从这个意义上讲，“wq 文本编辑器”是史上持续时间最长、最成功的开源项目之一，它曾汇聚了计算机世界里一些最顶尖大脑的智慧与贡献。我并非认为“创业公司抛弃一切传统，创造颠覆性新软件”的开发模式有什么不好，但 Vim 的故事提醒着我们：协作与迭代，同样能创造奇迹。
+Vim 是如何取得如此成功的？显然，人们喜欢 Vim 提供给他们的功能。但我认为，Vim 背后的悠久历史表明，它不仅仅拥有其功能集所带来的优势。Vim 的代码库只追溯到 1988 年，当时穆勒纳尔 (Moolenaar) 开始开发它。而“wq 文本编辑器”——关于 Unix 风格文本编辑器应如何工作的更广阔愿景——则可以追溯到半个世纪前。“wq 文本编辑器”有几种不同的具体表现形式，但部分归功于比尔·乔伊 (Bill Joy) 和布拉姆·穆勒纳尔 (Bram Moolenaar) 对向后兼容性 (backward compatibility) 的异常关注，好的想法随着时间的推移逐渐积累。从这个意义上说，“wq 文本编辑器”是运行时间最长、最成功的开源项目之一，它得到了计算界一些最伟大思想的贡献。我不认为“初创公司抛弃所有先例并创造颠覆性新软件”的开发方法一定是坏事，但 Vim 提醒我们，协作和增量的方法也能创造奇迹。
 
+*如果你喜欢这篇文章，每四周都会有更多类似的文章发布！请在 Twitter 上关注 [@TwoBitHistory](https://twitter.com/TwoBitHistory) 或订阅 [RSS 源](https://twobithistory.org/feed.xml)，确保你不会错过新文章。*
 
-[^1]:  Butler Lampson, “Systems,” Butler Lampson, accessed August 5, 2018, <http://bwlampson.site/Systems.htm>.
-[^2]:  Dennis Ritchie, “An Incomplete History of the QED Editor,” accessed August 5, 2018, <https://www.bell-labs.com/usr/dmr/www/qed.html>.
-[^3]:  Peter Salus, “The Daemon, the GNU, and the Penguin,” Groklaw, April 14, 2005, accessed August 5, 2018, <http://www.groklaw.net/article.php?story=20050414215646742>.
-[^4]:  ibid.（同上）
-[^5]:  Dennis Ritchie, “An Incomplete History of the QED Editor,” accessed August 5, 2018, <https://www.bell-labs.com/usr/dmr/www/qed.html>.
-[^6]:  Donald Norman, “The Truth about Unix: The User Interface Is Horrid,” Datamation, accessed August 5, 2018, <http://www.ceri.memphis.edu/people/smalley/ESCI7205_misc_files/The_truth_about_Unix_cleaned.pdf>.
-[^7]:  George Coulouris, “George Coulouris: A Bit of History,” George Coulouris’ Homepage, September 1998, accessed August 5, 2018, <http://www.eecs.qmul.ac.uk/~gc/history/index.html>.
-[^8]:  “Second Berkeley Software Distribution Manual,” Roguelife, accessed August 5, 2018, <http://roguelife.org/~fujita/COOKIES/HISTORY/2BSD/vi.u.html>.
-[^9]:  Sven Guckes, “VIM Wishlist,” Vmunix, May 15, 1995, accessed August 5, 2018, <https://web.archive.org/web/20080520075925/http://www.vmunix.com/vim/wish.html>.
-[^10]: Bram Moolenaar, “Vim 25” (lecture, Zurich, November 2, 2016), December 13, 2016, accessed August 5, 2018, <https://www.youtube.com/watch?v=ayc_qpB-93o&t=4m58>s
-[^11]: ibid. (?t=6m15s)
-[^12]: ibid. (?t=7m6s)
-[^13]: “Fish Disks 1 - 1120,” Amiga Stuff, accessed August 5, 2018, <http://www.amiga-stuff.com/pd/fish.html>.
-[^14]: “2005 Linux Journal Reader’s Choice Awards,” Linux Journal, September 28, 2005, accessed August 5, 2018, <https://www.linuxjournal.com/article/8520#N0x850cd80.0x87983bc>.
-[^15]: “Stack Overflow Developer Survey 2018,” Stack Overflow, accessed August 5, 2018, <https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools>.
-[^16]: Bruce Byfield, “The End of the Editor Wars,” Linux Magazine, May 11, 2015, accessed August 5, 2018, <http://www.linux-magazine.com/Online/Blogs/Off-the-Beat-Bruce-Byfield-s-Blog/The-End-of-the-Editor-Wars>.
+*TwoBitHistory 往期回顾…*
+
+> 新文章！这次我们来看看 Altair 8800，第一台家用电脑，以及如何在你的现代电脑上模拟它。<https://t.co/s2sB5njrkd>
+>
+> — TwoBitHistory (@TwoBitHistory) [2018 年 7 月 22 日](https://twitter.com/TwoBitHistory/status/1021058552352387074?ref_src=twsrc%5Etfw)
+
+---
+
+[^1]: 巴特勒·兰普森 (Butler Lampson)，《系统》，巴特勒·兰普森，访问日期：2018 年 8 月 5 日，<http://bwlampson.site/Systems.htm>。
+[^2]: 丹尼斯·里奇 (Dennis Ritchie)，《QED 编辑器不完全历史》，访问日期：2018 年 8 月 5 日，[https://www.bell-labs.com/usr/dmr/www/qed.html](https://www.bell-labs.com/usr/dmr/www/qed.html)。
+[^3]: 彼得·萨卢斯 (Peter Salus)，《守护进程、GNU 和企鹅》，Groklaw，2005 年 4 月 14 日，访问日期：2018 年 8 月 5 日，[http://www.groklaw.net/article.php?story=20050414215646742](http://www.groklaw.net/article.php?story=20050414215646742)。
+[^4]: 同上。
+[^5]: 丹尼斯·里奇 (Dennis Ritchie)，《QED 编辑器不完全历史》，访问日期：2018 年 8 月 5 日，[https://www.bell-labs.com/usr/dmr/www/qed.html](https://www.bell-labs.com/usr/dmr/www/qed.html)。
+[^6]: 唐纳德·诺曼 (Donald Norman)，《关于 Unix 的真相：用户界面糟糕透顶》，Datamation，访问日期：2018 年 8 月 5 日，<http://www.ceri.memphis.edu/people/smalley/ESCI7205_misc_files/The_truth_about_Unix_cleaned.pdf>。
+[^7]: 乔治·库鲁里斯 (George Coulouris)，《乔治·库鲁里斯：一段历史》，乔治·库鲁里斯个人主页，1998 年 9 月，访问日期：2018 年 8 月 5 日，[http://www.eecs.qmul.ac.uk/~gc/history/index.html](http://www.eecs.qmul.ac.uk/~gc/history/index.html)。
+[^8]: 《第二版伯克利软件发行版手册》，Roguelife，访问日期：2018 年 8 月 5 日，[http://roguelife.org/~fujita/COOKIES/HISTORY/2BSD/vi.u.html](http://roguelife.org/~fujita/COOKIES/HISTORY/2BSD/vi.u.html)。
+[^9]: 斯文·古克斯 (Sven Guckes)，《VIM 愿望清单》，Vmunix，1995 年 5 月 15 日，访问日期：2018 年 8 月 5 日，<https://web.archive.org/web/20080520075925/http://www.vmunix.com/vim/wish.html>。
+[^10]: 布拉姆·穆勒纳尔 (Bram Moolenaar)，《Vim 25》（讲座，苏黎世，2016 年 11 月 2 日），2016 年 12 月 13 日，访问日期：2018 年 8 月 5 日，[https://www.youtube.com/watch?v=ayc_qpB-93o&t=4m58s](https://www.youtube.com/watch?v=ayc_qpB-93o&t=4m58s)
+[^11]: 同上。 (?t=6m15s)
+[^12]: 同上。 (?t=7m6s)
+[^13]: 《Fish 磁盘 1 - 1120》，Amiga Stuff，访问日期：2018 年 8 月 5 日，[http://www.amiga-stuff.com/pd/fish.html](http://www.amiga-stuff.com/pd/fish.html)。
+[^14]: 《2005 年 Linux Journal 读者选择奖》，Linux Journal，2005 年 9 月 28 日，访问日期：2018 年 8 月 5 日，[https://www.linuxjournal.com/article/8520#N0x850cd80.0x87983bc](https://www.linuxjournal.com/article/8520#N0x850cd80.0x87983bc)。
+[^15]: 《Stack Overflow 2018 年开发者调查》，Stack Overflow，访问日期：2018 年 8 月 5 日，[https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools](https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools)。
+[^16]: 布鲁斯·拜菲尔德 (Bruce Byfield)，《编辑器大战的终结》，Linux Magazine，2015 年 5 月 11 日，访问日期：2018 年 8 月 5 日，[http://www.linux-magazine.com/Online/Blogs/Off-the-Beat-Bruce-Byfield-s-Blog/The-End-of-the-Editor-Wars](http://www.linux-magazine.com/Online/Blogs/Off-the-Beat-Bruce-Byfield-s-Blog/The-End-of-the-Editor-Wars)。
