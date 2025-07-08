@@ -2,6 +2,7 @@ from llama_index.llms.google_genai import GoogleGenAI
 from llama_index.core.llms import ChatMessage
 
 import os
+
 PROMPT_PATH = os.getenv("PROMPT_PATH", "translations/twobithistory/code/prompt.md")
 
 
@@ -15,6 +16,7 @@ def read_file(filepath):
 def create_translate_agent() -> GoogleGenAI:
     # 从环境变量中获取 API 密钥
     import os
+
     api_key = os.getenv("GOOGLE_GEMINI_API_KEY")
     # 创建 GoogleGemini 实例
     gemini = GoogleGenAI(
@@ -23,19 +25,19 @@ def create_translate_agent() -> GoogleGenAI:
     )
     return gemini
 
+
 # 使用 GoogleGemini 实例进行翻译
 # 对 gemini 实例输入 text 作为输入，输出就是翻译后的文本
 def translate_text(gemini: GoogleGenAI, text: str) -> str:
     prompt = read_file(PROMPT_PATH)
 
     messages = [
-        ChatMessage(
-            role="system", content=prompt
-        ),
+        ChatMessage(role="system", content=prompt),
         ChatMessage(role="user", content=text),
     ]
     response = gemini.chat(messages)
     return response.message.content
+
 
 def translate_file(filepath):
     text = read_file(filepath)
@@ -72,6 +74,7 @@ def process_folder(input_folder, output_folder):
 
             print(f"Saved translated file to {output_filepath}")
 
+
 def process_single_file(input_file, output_file):
     translated_text = translate_file(input_file)
     with open(output_file, "w", encoding="utf-8") as f:
@@ -85,8 +88,9 @@ def test_gemini():
     resp = gemini.complete(text)
     print(resp)
 
+
 if __name__ == "__main__":
     process_single_file(
         r"C:\code\translations\twobithistory\original\the-ruby-story.md",
-        r"C:\code\translations\twobithistory\the-ruby-story.md"
+        r"C:\code\translations\twobithistory\the-ruby-story.md",
     )
