@@ -53,10 +53,7 @@ JSON 在 2005 年获得了巨大的推动。那一年，一位名叫 Jesse James
 
 2006 年，Dave Winer (一位多产的博主，也是 RSS 和 XML-RPC 等多种基于 XML 技术背后的工程师) 抱怨说，JSON 毫无理由地重新发明了 XML。尽管人们可能会认为数据交换格式之间的竞争不太可能引发死亡威胁，但 Winer 写道：
 
-> No doubt I can write a routine to parse [JSON], but look at how deep they
-> went to re-invent, XML itself wasn’t good enough for them, for some reason
-> (I’d love to hear the reason). Who did this travesty? Let’s find a tree and
-> string them up. Now.[^7]
+> 毫无疑问，我可以编写一段程序来解析 [JSON]，但看看他们为了另起炉灶 (re-invent) 竟然做得如此彻底，连 XML (Extensible Markup Language) 都无法满足他们的要求，其中必有原因 ( 我很想知道原因 )。谁搞出了这种荒谬之举 (travesty)？真该把他们揪出来好好问问！现在就问！[^7]
 
 不难理解 Winer 的沮丧。XML 从未受到广泛喜爱。甚至 Winer 自己也说过他不喜欢 XML。[^8] 但 XML 的设计初衷是一个可以被所有人用于几乎任何可想象用途的系统。为此，XML 实际上是一种元语言 (meta-language)，允许你为特定应用程序定义领域特定语言 (domain-specific languages)——RSS (一种网络订阅技术) 和 SOAP (简单对象访问协议) 就是例子。Winer 认为，达成共识很重要，因为一种通用的交换格式能带来诸多好处。他认为 XML 的灵活性应该能够满足所有人的需求。然而，JSON 却出现了，这种格式除了抛弃了让 XML 如此灵活的那些冗余部分所带来的好处之外，并没有比 XML 提供更多优势。
 

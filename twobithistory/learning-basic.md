@@ -79,15 +79,15 @@ repeatedly](https://twobithistory.org/images/c64_print_loop.png)
 然后你学习了 `IF... THEN...` (IF...THEN...) 和 `FOR... NEXT...` (FOR...NEXT...) 结构。有了所有这些新工具，你觉得自己有能力应对手册抛出的下一个大挑战。它诱惑道：“如果你是那种有抱负的人，输入以下程序，看看会发生什么。”这个程序比你目前见过的任何程序都更长、更复杂，但你非常想知道它会做什么：
 
 ```
-10  REM 弹跳球
+10  REM BOUNCING BALL
 20  PRINT "{CLR/HOME}"
 25  FOR X = 1 TO 10 : PRINT "{CRSR/DOWN}" : NEXT
 30  FOR BL = 1 TO 40
-40  PRINT " ●{CRSR LEFT}";:REM (● 是 Shift-Q)
+40  PRINT " ●{CRSR LEFT}";:REM (● is a Shift-Q)
 50  FOR TM = 1 TO 5
 60  NEXT TM
 70  NEXT BL
-75  REM 将球从右向左移动
+75  REM MOVE BALL RIGHT TO LEFT
 80  FOR BL = 40 TO 1 STEP -1
 90  PRINT " {CRSR LEFT}{CRSR LEFT}●{CRSR LEFT}";
 100 FOR TM = 1 TO 5

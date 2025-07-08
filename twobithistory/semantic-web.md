@@ -85,3 +85,20 @@ JSON-LD 和 OpenGraph 的迷人之处在于，你可以在不了解主语-谓语
 因此，语义网面临的问题比“XML 糟透了”更广泛、更深刻。尽管如此，很难相信语义网真的已经彻底消亡。W3C 在 2000 年代早期构想的一些特定技术可能没有未来，但蒂姆·伯纳斯-李和他的研究伙伴在《科学美国人》中描述的去中心化网络愿景太引人入胜，不会轻易消失。想象一下，在一个网络中，你无需每次注册服务时都填写相同的繁琐表格，而是能够以某种方式授权服务从你自己的网站获取信息。想象一下，一个脸书 ( Facebook ) 能够更新你自己的网站上托管的你的朋友列表，而不是反过来。基本上，语义网将是一个每个人都能拥有自己的个人 REST API 的网络，无论他们是否懂计算机。这样构想，很容易理解为什么语义网尚未实现。从现在到那时，还有太多的工程和安全问题需要解决。但也很容易理解为什么语义网的梦想吸引了如此多的人。
 
 *如果你喜欢这篇文章，更多类似内容每四周发布一次！在 Twitter 上关注 [@TwoBitHistory](https://twitter.com/TwoBitHistory) 或订阅 [RSS 订阅源](https://twobithistory.org/feed.xml)，确保你不会错过新文章。*
+
+[^1]: Berners\-Lee, Tim, James Hendler, and Ora Lassila. “The Semantic Web.” *Scientific American*, May 2001, [https://www\-sop.inria.fr/acacia/cours/essi2006/Scientific%20American\_%20Feature%20Article\_%20The%20Semantic%20Web\_%20May%202001\.pdf](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf).
+[^2]: Shannon, Victoria. “A ‘more Revolutionary’ Web.” The New York Times, May 23, 2006\. [https://www.nytimes.com/2006/05/23/technology/23iht\-web.html](https://www.nytimes.com/2006/05/23/technology/23iht-web.html).
+[^3]: Doctorow, Cory. “Metacrap: Putting the Torch to Seven Straw\-men of the Meta\-utopia.” August 26, 2001\. Accessed May 26, 2018\. <https://people.well.com/user/doctorow/metacrap.htm>.
+[^4]: Doctorow, Cory. “‘Metacrap’ and the History of the Semantic Web.” [E\-mail message](https://twobithistory.org/doctorow.txt) to author. May 11, 2018\.
+[^5]: Munat, Ben. “The Lowercase Semantic Web: Using Semantics on the Existing World Wide Web.” May 2004\. Accessed May 26, 2018\. [http://citeseerx.ist.psu.edu/viewdoc/download?doi\=10\.1\.1\.85\.3445\&rep\=rep1\&type\=pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.85.3445&rep=rep1&type=pdf).
+[^6]: Swartz, Aaron. A Programmable Web: An Unfinished Work. Morgan and Claypool, 2013\. March 12, 2013\. Accessed May 26, 2018\. <https://upload.wikimedia.org/wikipedia/commons/3/3f/Aaron_Swartz_s_A_Programmable_Web_An_Unfinished_Work.pdf>.
+[^7]: Palmer, Sean B. “What Happened to the Semantic Web?” October 11, 2017\. SW\-forum Web. Accessed May 26, 2018\. [http://lists.w3\.org/Archives/Public/public\-lod/2017Oct/0003\.html](http://lists.w3.org/Archives/Public/public-lod/2017Oct/0003.html).
+[^8]: Bray, Tim. “The RDF.net Challenge.” Ongoing by Tim Bray. May 21, 2003\. Accessed May 26, 2018\. <https://www.tbray.org/ongoing/When/200x/2003/05/21/RDFNet>.
+[^9]: Bray, Tim, and Joshua Tauberer. “What Is RDF.” XML.com. July 26, 2006\. Accessed May 26, 2018\. <http://www.xml.com/pub/a/2001/01/24/rdf.html>.
+[^10]: Berners\-Lee, Tim. “Linked Data.” W3C. June 18, 2009\. Accessed May 26, 2018\. [https://www.w3\.org/DesignIssues/LinkedData.html](https://www.w3.org/DesignIssues/LinkedData.html).
+[^11]: Sporny, Manu. “The Origins of JSON\-LD.” The Beautiful, Tormented Machine. January 19, 2014\. Accessed May 26, 2018\. [http://manu.sporny.org/2014/json\-ld\-origins/](http://manu.sporny.org/2014/json-ld-origins/).
+[^12]: “Data Model.” Schema.org. Accessed May 26, 2018\. <http://schema.org/docs/datamodel.html>.
+[^13]: Raggett, Dave. “W3C Study of Practices and Tooling for Web Data Standardisation.” W3C. December 2017\. Accessed May 26, 2018\. [https://www.w3\.org/2017/12/odi\-study/](https://www.w3.org/2017/12/odi-study/).
+[^14]: Rochkind, Jonathan. “Is the Semantic Web Still a Thing?” Bibliographic Wilderness. October 28, 2014\. Accessed May 26, 2018\. [https://bibwild.wordpress.com/2014/10/28/is\-the\-semantic\-web\-still\-a\-thing/](https://bibwild.wordpress.com/2014/10/28/is-the-semantic-web-still-a-thing/). Quoting Hacker News user “bane.” [https://news.ycombinator.com/item?id\=8510970](https://news.ycombinator.com/item?id=8510970).
+[^15]: Sporny, Manu. “JSON\-LD and Why I Hate the Semantic Web.” The Beautiful, Tormented Machine. January 21, 2014\. Accessed May 26, 2018\. [http://manu.sporny.org/2014/json\-ld\-origins\-2/](http://manu.sporny.org/2014/json-ld-origins-2/).
+[^16]: Palmer, Sean B.
